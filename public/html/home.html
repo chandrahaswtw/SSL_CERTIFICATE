@@ -1,0 +1,55 @@
+<!doctype <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DETAILS</title>
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/home.css" />
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/toastr.min.css">
+    <script src="javascript/third_party/jquery-3.3.1.min.js"></script>
+    <script src="javascript/third_party/toastr.min.js"></script>
+    <script src="javascript/third_party/bootstrap.min.js"></script>
+    <script src="javascript/third_party/handlebars-v4.0.11.js"></script>
+    <script src="templates/home_compiled.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">        
+           <div class="container">   
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active" style="margin-right: 30px">
+                      <a class="nav-link" href="\">HOME <i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item" style="margin-right: 30px">
+                      <a class="nav-link" href="\add">ADD <i class="fas fa-plus-circle"></i></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="\search">SEARCH <i class="fas fa-search"></i></a>
+                    </li>
+                  </ul>
+                </div>
+            </div>
+        </nav>
+
+    <div class="jumbotron jumbotron-fluid" style="margin-bottom : 0">
+        <div class="container">
+            <h1 class="display-4">SSL VALIDATION</h1>
+            <p class="lead">This reflects the SSL certificate details.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <div id="TABLE_CONTAINER"></div>
+    </div>
+
+    <script src="javascript/home.js"></script>
+</body>
+
+</html>
