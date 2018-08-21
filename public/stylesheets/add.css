@@ -74,18 +74,26 @@
     transform: translateX(26px);
   }
 
-  #loading {
-    width: 100%;
-    height: 100%;
-    top: 0;
+  /* #loading1 {
+    position:relative;
+    top:0px;
     left: 0;
-    position: fixed;
-    display: block;
+    width:100%;
+    height:100%;
+    background-color:#fff;
+    background-repeat:no-repeat;
+    background-position:center;
+    z-index:99;
     opacity: 0.7;
-    background-color: #fff;
-    z-index: 99;
-    text-align: center;
- }
+    display: block;
+ } */
+
+ /* #loading_image {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+ } */
 
  #pan_id {
    border: #2196F3 solid 2px;

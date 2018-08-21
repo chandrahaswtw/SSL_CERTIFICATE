@@ -1,8 +1,13 @@
 
 $(document).ready(function () {
 
+  $('#loading').hide();
+  
   $( function() {
-    $( "#SSL_CALEN_ID" ).datepicker();
+    $('#SSL_CALEN_ID').datepicker({
+      language: 'en',
+      autoClose: true
+  })
   } );
 
   $('#SSL_CALEN').hide();
@@ -38,10 +43,22 @@ $(document).ready(function () {
       return toastr.warning('SELECT THE SEARCH PARAMETER')
     if (!formElements[1].value && $('#DROP_DOWN').val() != "expDate")
       return toastr.warning('ENTER THE SEARCH VALUE')
+    $('#loading').show();
     $.get('/search_details', { input: formElements })
       .done(function (data) {
-        console.log(data);
-        $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
+        if(data.ALL_RECORDS.length == 0)
+          {
+            $('#loading').hide();
+            return toastr.error('NO RECORDS FOUND FOR THE SEARCH');
+            $('#TABLE_CONTAINER').hide();
+          }
+        else
+        {
+          $('#loading').hide();
+          $('#TABLE_CONTAINER').show();
+          $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
+          return toastr.success(`${data.ALL_RECORDS.length} RECORDS FOUND`);
+        }
       });
   })
 

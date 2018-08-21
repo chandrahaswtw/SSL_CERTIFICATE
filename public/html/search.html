@@ -5,21 +5,46 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>SEARCH</title>
-  <link rel="stylesheet" href="stylesheets/search.css" />
-  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
-  <link rel="stylesheet" href="stylesheets/toastr.min.css">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  
+  <!-- JQUERY -->
   <script src="javascript/third_party/jquery-3.3.1.min.js"></script>
-  <script src="javascript/third_party/toastr.min.js"></script>
+
+  <!-- JQUERY UI -->
+  <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+  <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+
+  <!-- CUSTOM STYLES -->
+  <link rel="stylesheet" href="stylesheets/search.css" />
+
+  <!-- BOOTSTRAP -->
+  <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
   <script src="javascript/third_party/bootstrap.min.js"></script>
+
+  <!-- TOASTR -->
+  <link rel="stylesheet" href="stylesheets/toastr.min.css">
+  <script src="javascript/third_party/toastr.min.js"></script>
+  
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  
+  <!-- HANDLEBARS -->
   <script src="javascript/third_party/handlebars-v4.0.11.js"></script>
   <script src="templates/search_compiled.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  <!-- AIR-DATEPICKER -->
+  <link href="stylesheets/datepicker.min.css" rel="stylesheet">
+  <script src="javascript/third_party/datepicker.min.js"></script>
+  <script src="javascript/third_party/datepicker.en.js"></script>
 
 </head>
 
 <body>
+
+  <div id="loading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color:#fff; z-index: 30001; opacity: 0.7;">
+      <div style="position: absolute; color: White; top: 35%; left: 42.5%;">
+      <img src="gif/Double_Ring.gif">
+      </div>
+  </div>
 
   <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
           <div class="container">
@@ -40,7 +65,7 @@
        </nav>
 
        <div class="card bg-light">
-         <div class="card-body" style="min-height: 115px; margin-top:30px" >
+         <div class="card-body" style="min-height: 115px; margin-top:30px;" >
            <div class="container">
              <form id="SEARCH_FORM">
                <div class="row">
@@ -55,15 +80,21 @@
                        </select>
                      </div>
 
-                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  id="SEARCH_TEXT" style="padding-left:1px">
-                       <input type="text" name="SEARCH_TEXT" placeholder="ENTER THE SEARCH VALUE" autocomplete="off" class="form-control"  id="SEARCH_TEXT_ID"><i class="fas fa-search"></i>
+                     <div class="input-group col-lg-3 col-md-3 col-sm-6 col-xs-12"  id="SEARCH_TEXT" style="padding-left:0px">
+                       <input type="text" name="SEARCH_TEXT" placeholder="ENTER THE SEARCH" autocomplete="off" class="form-control border-right-0"  id="SEARCH_TEXT_ID">
+                       <div class="input-group-prepend bg-white">
+                        <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1"><i class="fas fa-search"></i></span>
+                      </div>
                      </div>
 
-                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  id="SSL_CALEN" style="padding-left:1px">
-                       <input type="text" name="SEARCH_DATE" id="SSL_CALEN_ID" placeholder="CLICK TO ENTER DATE" autocomplete="off" class="form-control">
+                     <div class="input-group col-lg-3 col-md-3 col-sm-6 col-xs-12" class='datepicker-here' data-language='en' id="SSL_CALEN" style="padding-left:0px">
+                       <input type="text" name="SEARCH_DATE" id="SSL_CALEN_ID" placeholder="CLICK TO ENTER DATE" autocomplete="off" class="form-control border-right-0">
+                       <div class="input-group-prepend bg-white">
+                        <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1"><i class="fas fa-calendar-alt"></i></span>
+                      </div>
                      </div>
 
-                     <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12" style="padding-left:1px">
+                     <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12" style="padding-left:0px">
                        <button class="btn btn-primary" id="btn_search">SEARCH</button>
                      </div>
 
@@ -73,6 +104,10 @@
              </form>
          </div>
        </div>
+    </div>
+<br>
+
+
 
        <!--LAYOUT OPTIONS-->
        <div class="container">

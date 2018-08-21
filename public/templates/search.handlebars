@@ -1,11 +1,14 @@
 <table class="table table-hover">
-            <thead class="thead-light">
+    <caption>LIST OF APPLICATIONS & SERVERS</caption>
+            <thead class="thead-dark">
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">APP ID</th>
                 <th scope="col">APP NAME</th>
                 <th scope="col">SERVER NAME</th>
                 <th scope="col">EXPIRY DATE</th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
     
@@ -16,6 +19,8 @@
                 <td scope="col">{{this.appName}}</td>
                 <td scope="col">{{this.serverName}}</td>
                 <td scope="col">{{this.expDate}}</td>
+                <td scope="col" id="{{this.doc._id}}"><i class="fas fa-eye"></i></td>
+                <td scope="col" id="{{this.doc._id}}"><i class="fas fa-edit"></i></td>
             </tr>
             {{/each}}
         </table>
