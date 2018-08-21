@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cloudant = require('./routes/cloudant');
 
 const app = express();
+const port = process.env.PORT || '3000';
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public/'));
@@ -43,4 +44,4 @@ app.get('/add_details',(req,res)=>{
 
 
 //*******************APP LISTEN ************//
-app.listen(3000,()=>{console.log('APP STARTED')});
+app.listen(port,()=>{console.log('APP STARTED')});
