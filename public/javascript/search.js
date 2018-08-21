@@ -1,6 +1,10 @@
 
 $(document).ready(function () {
 
+  $( function() {
+    $( "#SSL_CALEN_ID" ).datepicker();
+  } );
+
   $('#SSL_CALEN').hide();
   $('#DROP_DOWN').on('change', function () {
     if ($('#DROP_DOWN').val() == "expDate") {

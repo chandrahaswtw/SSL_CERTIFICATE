@@ -8,12 +8,14 @@
   <link rel="stylesheet" href="stylesheets/search.css" />
   <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
   <link rel="stylesheet" href="stylesheets/toastr.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   <script src="javascript/third_party/jquery-3.3.1.min.js"></script>
   <script src="javascript/third_party/toastr.min.js"></script>
   <script src="javascript/third_party/bootstrap.min.js"></script>
   <script src="javascript/third_party/handlebars-v4.0.11.js"></script>
   <script src="templates/search_compiled.js"></script>
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 </head>
 
@@ -37,41 +39,46 @@
            </div>
        </nav>
 
-       <div class="card">
-         <div class="card-body">
+       <div class="card bg-light">
+         <div class="card-body" style="min-height: 115px; margin-top:30px" >
            <div class="container">
              <form id="SEARCH_FORM">
                <div class="row">
 
-                 <div class="col-lg-2 col-md-3 col-sm-6 col-xs-12" style="padding-right : 0">
-                   <select id="DROP_DOWN" class="form-control" name="envName">
-                     <option value="">Select Parameter</option>
-                     <option value="appId">APP ID</option>
-                     <option value="serverName">SERVER</option>
-                     <option value="expDate">SSL EXPIRY</option>
-                   </select>
-                 </div>
+                     <div class="col-lg-2 col-md-2" style="padding-left:1px"></div>
+                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                       <select id="DROP_DOWN" class="form-control" name="envName">
+                         <option value="">Select Parameter</option>
+                         <option value="appId">APP ID</option>
+                         <option value="serverName">SERVER</option>
+                         <option value="expDate">SSL EXPIRY</option>
+                       </select>
+                     </div>
 
-                 <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" style="padding-left : 3px;padding-right : 2px" id="SEARCH_TEXT">
-                   <input type="text" placeholder="ENTER THE SEARCH VALUE" autocomplete="off" class="form-control" name="SEARCH_TEXT" id="SEARCH_TEXT_ID">
-                 </div>
+                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  id="SEARCH_TEXT" style="padding-left:1px">
+                       <input type="text" name="SEARCH_TEXT" placeholder="ENTER THE SEARCH VALUE" autocomplete="off" class="form-control"  id="SEARCH_TEXT_ID"><i class="fas fa-search"></i>
+                     </div>
 
-                 <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6" style="padding-right : 0px" id="SSL_CALEN" style="padding-right : 5px">
-                   <input type="date" name="SEARCH_DATE" id="SSL_CALEN_ID">
-                 </div>
+                     <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12"  id="SSL_CALEN" style="padding-left:1px">
+                       <input type="text" name="SEARCH_DATE" id="SSL_CALEN_ID" placeholder="CLICK TO ENTER DATE" autocomplete="off" class="form-control">
+                     </div>
 
-                 <div class="col-lg-1 col-md-2 col-sm-4 col-xs-6" style="padding-left : 0px">
-                   <button class="btn btn-primary" id="btn_search">SEARCH</button>
-                 </div>
+                     <div class="col-lg-1 col-md-1 col-sm-6 col-xs-12" style="padding-left:1px">
+                       <button class="btn btn-primary" id="btn_search">SEARCH</button>
+                     </div>
+
+
+
                </div>
              </form>
          </div>
        </div>
 
+       <!--LAYOUT OPTIONS-->
+       <div class="container">
+       <div id="TABLE_CONTAINER"></div>
+       </div>
 
-
-    <!--LAYOUT OPTIONS-->
-    <div id="TABLE_CONTAINER"></div>
     <script src="javascript/search.js"></script>
 
 </body>

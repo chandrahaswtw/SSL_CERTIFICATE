@@ -80,7 +80,7 @@ module.exports.search_record = (details,res)=>{
     })
    
     amanda.find(cloudant_query(x[Object.keys(x)[0]],x[Object.keys(x)[1]]),(err,result)=>
-    {   console.log(result.docs);
+    {   //console.log(result.docs);
         res.send({ALL_RECORDS:result.docs});
     });    
 }
@@ -88,7 +88,7 @@ module.exports.search_record = (details,res)=>{
 
 module.exports.fetch_all = (res) =>{
     amanda.list({include_docs:true},function (err,data) {
-        console.log(data.rows);
+        //console.log(data.rows);
         res.send({ALL_RECORDS : data.rows});
     });
 }

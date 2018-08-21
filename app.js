@@ -1,6 +1,5 @@
 const express = require('express');
 const path = require('path');
-const hbs = require('hbs');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const cloudant = require('./routes/cloudant');
