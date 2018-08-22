@@ -50,12 +50,21 @@
           <div class="container">
                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                  <ul class="navbar-nav mr-auto">
-                   <li class="nav-item" style="margin-right: 30px">
+                   <li class="nav-item">
                      <a class="nav-link" href="\">HOME <i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
                    </li>
-                   <li class="nav-item" style="margin-right: 30px">
-                     <a class="nav-link" href="\add">ADD <i class="fas fa-plus-circle"></i></a>
-                   </li>
+
+                   <li class="nav-item dropdown">
+                      <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                          aria-expanded="false">
+                          ADD
+                          <i class="fas fa-plus-circle"></i>
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                          <a class="dropdown-item" href="\add">MANUAL</a>
+                          <a class="dropdown-item" href="\bulk_upload">BULK UPLOAD</a>
+                  </li>
+                  
                    <li class="nav-item active">
                      <a class="nav-link" href="\search">SEARCH <i class="fas fa-search"></i></a>
                    </li>
@@ -74,9 +83,11 @@
                      <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                        <select id="DROP_DOWN" class="form-control" name="envName">
                          <option value="">Select Parameter</option>
+                         <option value="all">ALL</option>
                          <option value="appId">APP ID</option>
                          <option value="serverName">SERVER</option>
-                         <option value="expDate">SSL EXPIRY</option>
+                         <option value="expDate">SSL EXPIRY DATE</option>
+                         <option value="expStatus">SSL EXPIRY STATUS</option>
                        </select>
                      </div>
 

@@ -16,9 +16,15 @@ app.get('/',(req,res)=>{
     res.sendFile(static_files + 'home.html');
     //cloudant.fetch_all(res);
 })
-//ADD PAGE
+
+//ADD PAGE MANUAL
 app.get('/add',(req,res)=>{
     res.sendFile(static_files + 'add.html');
+})
+
+//ADD PAGE MANUAL
+app.get('/bulk_upload',(req,res)=>{
+    res.sendFile(static_files + 'bulkUpload.html');
 })
 
 //SEARCH PAGE

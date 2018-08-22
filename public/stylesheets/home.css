@@ -5,3 +5,12 @@ table {
     content: counter(tableCount); 
     counter-increment: tableCount; 
 }
+
+li:hover {
+    color: azure;
+}
+
+li
+{
+    margin-right: 30px;
+}

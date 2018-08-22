@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>SSL Validation Tool</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="stylesheets/add.css" />
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="stylesheets/toastr.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <script src="javascript/third_party/jquery-3.3.1.min.js"></script>
+    <script src="javascript/third_party/toastr.min.js"></script>
+    <script src="javascript/third_party/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link href="stylesheets/datepicker.min.css" rel="stylesheet" type="text/css">
+    <script src="javascript/third_party/datepicker.min.js"></script>
+    <script src="javascript/third_party/datepicker.en.js"></script>
+
+    <style>
+        .container {
+            margin-top: -10px;
+        }
+
+        #Header {
+            margin-top: 0px;
+        }
+    </style>
+</head>
+
+<body>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+                <div class="container">
+                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                       <ul class="navbar-nav mr-auto">
+                         <li class="nav-item" style="margin-right: 30px">
+                           <a class="nav-link" href="\">HOME <i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
+                         </li>
+                         <li class="nav-item active" style="margin-right: 30px">
+                           <a class="nav-link" href="\add">ADD <i class="fas fa-plus-circle"></i></a>
+                         </li>
+                         <li class="nav-item">
+                           <a class="nav-link" href="\search">SEARCH <i class="fas fa-search"></i></a>
+                         </li>
+                       </ul>
+                     </div>
+                 </div>
+             </nav>
+
+
+    <div id="loading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color:#fff; z-index: 30001; opacity: 0.7;">
+        <div style="position: absolute; color: White; top: 35%; left: 42.5%;">
+        <img src="gif/Double_Ring.gif">
+        </div>
+    </div>
+
+
+
+
+    <form id="frmadd">
+        <div class="container" class="rounded border" style="margin-top : 20px" id="cont_id">
+            <div class="panel" style="padding-left: 220px;padding-top: 20px" id="pan_id">
+                <div class="row">
+                    <div class="col-md-4 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="PortfolioName"> Portfolio</label>
+                        <!-- <input type="text" class="form-control" name="PortfolioName"> -->
+
+                        <select id="data" class="form-control" name="portfolioName">
+                            <option value="">Select Portfolio</option>
+                            <option value="Firefox">Firefox</option>
+                            <option value="Internet Explorer">Internet Explorer</option>
+                            <option value="Opera">Opera</option>
+                            <option value="Safari">Safari</option>
+                            <option value="Microsoft Edge">Microsoft</option>
+                        </select>
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-4 col-xs-12" style="width: 300px;border-radius: 34px;margin-left: 150px">
+                        <label for="AppName"> Application Name</label>
+                        <br/>
+                        <input type="text" class="form-control" name="appName">
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="AppIdName"> AppId</label>
+                        <input type="text" class="form-control" name="appId" style="width: 120px;border-radius: 13px">
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-4 col-xs-12" style="width: 200px;margin-left: 150px">
+                        <label for="EnvironmentName"> Environment</label>
+                        <!-- <input type="text" class="form-control" name="EnvironmentName"> -->
+                        <select id="Env" class="form-control" name="envName">
+                            <option value="">Select Environment</option>
+                            <option value="Production">Production</option>
+                            <option value="Pre-Production">Pre-Production</option>
+                            <option value="Development">Development</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="SSLName"> SSL Certificate Name</label>
+                        <input type="text" class="form-control" name="SSLCertName">
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-4 col-xs-12" style="width: 200px;margin-left: 150px">
+                        <label for="Expiry"> SSL Expiry Date</label>
+                        <input type="date" class="form-control" name="expDate" id="datepicker" style="border-radius: 13px">
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="Server"> Server Name</label>
+                        <input type="text" class="form-control" name="serverName">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-4 col-xs-12" style="margin-left: 150px">
+                        <label for="PrimaryName"> Primary Name</label>
+                        <input type="text" class="form-control" name="PrimaryName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="PrimaryEmail"> Primary Email</label>
+                        <input type="text" class="form-control" name="PrimaryEmail" style="border-radius: 13px">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="PrimaryPhone"> Primary Phone</label>
+                        <input type="text" class="form-control" name="PrimaryPhone">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-4 col-xs-12" style="margin-left: 150px">
+                        <label for="SecondaryName"> Secondary Name</label>
+                        <input type="text" class="form-control" name="SecondaryName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-7 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="SecondaryEmail"> Secondary Email</label>
+                        <input type="text" class="form-control" name="SecondaryEmail" style="border-radius: 13px">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="SecondaryPhone">Secondary Phone</label>
+                        <input type="text" class="form-control" name="SecondaryPhone">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-4 col-xs-12" style="margin-left: 150px">
+                        <label for="Alert">Alert Mechanism</label>
+                        <br/>
+                        <!-- <input type="text" class="form-control" name="Alert"> -->
+                        <select id="Alert" class="form-control" style="width: 100px" name="alertMech">
+                            <option value=""></option>
+                            <option value="Yes">Yes</option>
+                            <option value="No">No</option>
+                        </select>
+
+                        <!-- <label class="switch" id="lable1" >
+                            <input type="checkbox" checked>
+                            <span class="slider round"></span>
+                        </label> -->
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="AlertTooName">Alert Tool Name</label>
+                        <input type="text" class="form-control" name="alertToolName">
+                    </div>
+                    <div class="col-md-1">
+                    </div>
+                    <div class="col-md-4 col-xs-12" style="width: 200px;margin-left: 150px">
+                        <label for="Threshold"> Threshold Limit(in days)</label>
+                        <input type="text" class="form-control" name="Threshold">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-xs-12" style="width: 200px;margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="Triggered"> Last Triggered Date</label>
+                        <input type="date" class="form-control" name="lastTriggerDate" id="datepicker1" style="border-radius: 13px">
+                    </div>
+                    <div class="col-md-2">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-10 col-xs-12" style="margin-bottom: 7px;margin-right: 50px;margin-left: -100px">
+                        <label for="Remarks"> Remarks/Comments</label>
+                        <input type="text" class="form-control" name="Remarks" style="border-radius: 34px">
+                    </div>
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-2 col-xs-12">
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <input type="submit" value="Add" class="btn btn-primary form-control" style="border-radius: 34px" />
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                        <input type="button" value="Home" class="btn btn-primary form-control" style="border-radius: 34px" id = "home_btn"/>
+                    </div>
+                    <div class="col-md-3 col-xs-12">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </form>
+
+    <script src="javascript/add.js"></script>
+</body>
+
+</html>

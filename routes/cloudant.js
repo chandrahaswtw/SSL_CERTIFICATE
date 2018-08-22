@@ -36,6 +36,28 @@ function cloudant_query(PARAM1, PARAM2) {
                 }
                 ]
             };
+    
+    else if(PARAM1 == 'all')
+    return {
+        "selector": {
+        "_id": {
+            "$gt": "0"
+        }
+        },
+        "fields": [
+        "_id",
+        "appId",
+        "appName",
+        "serverName",
+        "expDate"
+        ],
+        "sort": [
+        {
+            "_id": "asc"
+        }
+        ]
+    };
+
     else
     return {
         "selector": {
@@ -78,9 +100,11 @@ module.exports.search_record = (details,res)=>{
         if(!x[`${e}`])
            delete x[`${e}`]
     })
+
+    //console.log(x);
    
     amanda.find(cloudant_query(x[Object.keys(x)[0]],x[Object.keys(x)[1]]),(err,result)=>
-    {   //console.log(result.docs);
+    {   console.log(result.docs);
         res.send({ALL_RECORDS:result.docs});
     });    
 }
