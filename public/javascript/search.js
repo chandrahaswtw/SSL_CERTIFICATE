@@ -2,6 +2,7 @@
 $(document).ready(function () {
 
   $('#loading').hide();
+  $('#ZONE').hide();
   
   $( function() {
     $('#SSL_CALEN_ID').datepicker({
@@ -15,6 +16,9 @@ $(document).ready(function () {
   $('#DROP_DOWN').on('change', function () {
 
     if ($('#DROP_DOWN').val() == "expDate") {
+      $('#ZONE').hide();
+      $('input[name="options"]').prop('checked', false);
+      $("#btn_search").show();
       $("#SEARCH_TEXT_ID").val('');
       $('#SSL_CALEN_ID').val('');
       $("#SEARCH_TEXT").hide();
@@ -22,6 +26,9 @@ $(document).ready(function () {
       toastr.info('POPULATE DATA LESS THAN THE SELECTED DATE');
     }
     else if ($('#DROP_DOWN').val() == "serverName") {
+      $('#ZONE').hide();
+      $('input[name="options"]').prop('checked', false);
+      $("#btn_search").show();
       $("#SEARCH_TEXT_ID").removeAttr('disabled');
       $("#SEARCH_TEXT_ID").val('');
       $("#SEARCH_TEXT_ID").attr('placeholder', 'ENTER SERVER NAME');
@@ -30,6 +37,9 @@ $(document).ready(function () {
       $('#SSL_CALEN').hide();
     }
     else if ($('#DROP_DOWN').val() == "appId") {
+      $('#ZONE').hide();
+      $('input[name="options"]').prop('checked', false);
+      $("#btn_search").show();
       $("#SEARCH_TEXT_ID").removeAttr('disabled');
       $("#SEARCH_TEXT_ID").val('');
       $("#SEARCH_TEXT_ID").attr('placeholder', 'ENTER APP ID');
@@ -38,6 +48,9 @@ $(document).ready(function () {
       $('#SSL_CALEN').hide();
     }
     else if ($('#DROP_DOWN').val() == "all") {
+      $('#ZONE').hide();
+      $('input[name="options"]').prop('checked', false);
+      $("#btn_search").show();
       $("#SEARCH_TEXT_ID").val('');
       $("#SEARCH_TEXT_ID").attr('placeholder', 'FETCHES ALL RECORDS');
       $("#SEARCH_TEXT_ID").attr('disabled','disabled');
@@ -45,8 +58,40 @@ $(document).ready(function () {
       $("#SEARCH_TEXT").show();
       $('#SSL_CALEN').hide();
     }
-
+    else if ($('#DROP_DOWN').val() == "expStatus") {
+      $('#ZONE').show();
+      $('input[name="options"]').prop('checked', false);
+      //$("#ZONE").css({'margin-left':'100px'});
+      $('#SSL_CALEN_ID').val('');
+      $("#SEARCH_TEXT_ID").val('');
+      $('#SSL_CALEN').hide();
+      $("#SEARCH_TEXT").hide();
+      $("#btn_search").hide();
+    }
   })
+
+
+  Handlebars.registerHelper('isGreen', function(expDate,thresholdDays){
+   var d1 = new Date();
+   var d2 = new Date(expDate);
+   d1.setDate(d1.getDate() + (thresholdDays + 30));
+   if(d1>d2)
+      return true;
+  })
+
+  Handlebars.registerHelper('isYellow', function(expDate,thresholdDays){
+    var d1 = new Date();
+    var d2 = new Date(expDate);
+    if(d1>d2)
+       return true;
+   })
+
+   Handlebars.registerHelper('isRed', function(expDate,thresholdDays){
+    var d1 = new Date();
+    var d2 = new Date(expDate);
+    if(d1>d2)
+       return true;
+   })
 
 
   $('#SEARCH_FORM').on('submit', function (e) {
