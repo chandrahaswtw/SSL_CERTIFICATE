@@ -3,14 +3,14 @@ $(document).ready(function () {
 
   $('#loading').hide();
   $('#ZONE').hide();
-  
-  $( function() {
+
+  $(function () {
     $('#SSL_CALEN_ID').datepicker({
       language: 'en',
       autoClose: true,
       dateFormat: 'mm/dd/yyyy'
-  })
-  } );
+    })
+  });
 
   $('#SSL_CALEN').hide();
   $('#DROP_DOWN').on('change', function () {
@@ -31,7 +31,7 @@ $(document).ready(function () {
       $("#btn_search").show();
       $("#SEARCH_TEXT_ID").removeAttr('disabled');
       $("#SEARCH_TEXT_ID").val('');
-      $("#SEARCH_TEXT_ID").attr('placeholder', 'ENTER SERVER NAME');
+      $("#SEARCH_TEXT_ID").attr('placeholder', 'Enter Sever Name');
       $('#SSL_CALEN_ID').val('');
       $("#SEARCH_TEXT").show();
       $('#SSL_CALEN').hide();
@@ -42,7 +42,7 @@ $(document).ready(function () {
       $("#btn_search").show();
       $("#SEARCH_TEXT_ID").removeAttr('disabled');
       $("#SEARCH_TEXT_ID").val('');
-      $("#SEARCH_TEXT_ID").attr('placeholder', 'ENTER APP ID');
+      $("#SEARCH_TEXT_ID").attr('placeholder', 'Enter App ID');
       $('#SSL_CALEN_ID').val('');
       $("#SEARCH_TEXT").show();
       $('#SSL_CALEN').hide();
@@ -52,8 +52,8 @@ $(document).ready(function () {
       $('input[name="options"]').prop('checked', false);
       $("#btn_search").show();
       $("#SEARCH_TEXT_ID").val('');
-      $("#SEARCH_TEXT_ID").attr('placeholder', 'FETCHES ALL RECORDS');
-      $("#SEARCH_TEXT_ID").attr('disabled','disabled');
+      $("#SEARCH_TEXT_ID").attr('placeholder', 'Fetch all records');
+      $("#SEARCH_TEXT_ID").attr('disabled', 'disabled');
       $('#SSL_CALEN_ID').val('');
       $("#SEARCH_TEXT").show();
       $('#SSL_CALEN').hide();
@@ -69,29 +69,36 @@ $(document).ready(function () {
       $("#btn_search").hide();
     }
   })
+  
+  Handlebars.registerHelper('isStatus', function (expDate, t_Days) {
+    var d1 = new Date();
+    var d2 = new Date();
+    var d3 = new Date(expDate);
+    var color;
 
+    if(!isNaN(Number(t_Days)))
+        t_Days = Number(t_Days);
+    else 
+        t_Days = 30;
 
-  Handlebars.registerHelper('isGreen', function(expDate,thresholdDays){
-   var d1 = new Date();
-   var d2 = new Date(expDate);
-   d1.setDate(d1.getDate() + (thresholdDays + 30));
-   if(d1>d2)
-      return true;
+    console.log(t_Days);
+    d1.setDate(d1.getDate() + t_Days + 30);
+    d2.setDate(d2.getDate() + t_Days);
+
+    if (d1 < d3)
+      color = "green";
+    else if (d1 > d3 && d2 < d3)
+      color = "yellow";
+    else if(d2 > d3)
+       color = "red";
+
+       console.log(color);
+       if(color)
+       return `<td scope="col" style="color:${color}"><i class="fas fa-square"></i></td>` ;
+       else
+       return `<td></td>`;
   })
 
-  Handlebars.registerHelper('isYellow', function(expDate,thresholdDays){
-    var d1 = new Date();
-    var d2 = new Date(expDate);
-    if(d1>d2)
-       return true;
-   })
-
-   Handlebars.registerHelper('isRed', function(expDate,thresholdDays){
-    var d1 = new Date();
-    var d2 = new Date(expDate);
-    if(d1>d2)
-       return true;
-   })
 
 
   $('#SEARCH_FORM').on('submit', function (e) {
@@ -104,18 +111,16 @@ $(document).ready(function () {
     $('#loading').show();
     $.get('/search_details', { input: formElements })
       .done(function (data) {
-        if(data.ALL_RECORDS.length == 0)
-          {
-            $('#loading').hide();
-            $('#TABLE_CONTAINER').hide();
-            return toastr.error('NO RECORDS FOUND FOR THE SEARCH');
-          }
-        else
-        {
+        if (data.ALL_RECORDS.length == 0) {
+          $('#loading').hide();
+          $('#TABLE_CONTAINER').hide();
+          return toastr.error('NO RECORDS FOUND FOR THE SEARCH');
+        }
+        else {
           $('#loading').hide();
           $('#TABLE_CONTAINER').show();
           $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
-          return toastr.success(`${data.ALL_RECORDS.length} RECORDS FOUND`);
+          return toastr.success(`${data.ALL_RECORDS.length} RECORD(S) FOUND`);
         }
       });
   })

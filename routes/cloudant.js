@@ -21,14 +21,15 @@ function cloudant_query(PARAM1, PARAM2) {
                 "expDate": {
                     "$lte": `${PARAM2}`
                 },
-                    //[`${PARAM1}`]: `${PARAM2}`
+    
                 },
                 "fields": [
                 "_id",
                 "appId",
                 "appName",
                 "serverName",
-                "expDate"
+                "expDate",
+                "thresholdDays"
                 ],
                 "sort": [
                 {
@@ -49,7 +50,8 @@ function cloudant_query(PARAM1, PARAM2) {
         "appId",
         "appName",
         "serverName",
-        "expDate"
+        "expDate",
+        "thresholdDays"
         ],
         "sort": [
         {
@@ -71,7 +73,8 @@ function cloudant_query(PARAM1, PARAM2) {
             "appId",
             "appName",
             "serverName",
-            "expDate"
+            "expDate",
+            "thresholdDays"
         ],
         "sort": [
         {

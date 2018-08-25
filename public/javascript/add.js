@@ -35,10 +35,13 @@ $(document).ready(function () {
     $.get('/add_details', { input: form_elements })
       .done(function (data) {
         $('#loading').hide();
+        $("#frmadd")[0].reset();
         if (data.status == "ERROR")
           toastr.error('INTERNAL ERROR');
         else
+         {
           toastr.success('RECORD ADDED');
+         }
       }, 'json');
   })
 

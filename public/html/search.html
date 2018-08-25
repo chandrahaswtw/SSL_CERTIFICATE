@@ -82,69 +82,99 @@
   <div class="card bg-light">
     <div class="card-body" style="min-height: 115px; margin-top:30px;">
       <div class="container">
-        <form id="SEARCH_FORM">
-          <div class="row">
 
-            <div class="col-lg-2 col-md-2" style="padding-left:1px"></div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-              <select id="DROP_DOWN" class="form-control" name="envName">
-                <option value="">Select Parameter</option>
-                <option value="all">ALL</option>
-                <option value="appId">APP ID</option>
-                <option value="serverName">SERVER</option>
-                <option value="expDate">SSL EXPIRY DATE</option>
-                <option value="expStatus">SSL EXPIRY STATUS</option>
-              </select>
-            </div>
 
-            <div class="input-group col-lg-3 col-md-3" id="SEARCH_TEXT" style="padding-left:0px">
-              <input type="text" name="SEARCH_TEXT" placeholder="ENTER THE SEARCH" autocomplete="off" class="form-control border-right-0"
-                id="SEARCH_TEXT_ID">
-              <div class="input-group-prepend bg-white">
-                <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
-                  <i class="fas fa-search"></i>
-                </span>
+        <div class="row">
+          <div class="col-lg-9 col-md-9">
+
+            <div class="card">
+              <!--BEGINNING OF WRAPPER 1-->
+              <div class="card-body" style="text-align: center">
+                <!--BEGINNING OF WRAPPER 2-->
+
+                <form id="SEARCH_FORM">
+                  <div class="row">
+
+
+                    <div class="col-lg-5 col-md-5">
+                      <select id="DROP_DOWN" class="form-control" name="envName">
+                        <option value="">Choose...</option>
+                        <option value="all">ALL</option>
+                        <option value="appId">APP ID</option>
+                        <option value="serverName">SERVER</option>
+                        <option value="expDate">SSL EXPIRY DATE</option>
+                        <option value="expStatus">SSL EXPIRY STATUS</option>
+                      </select>
+                    </div>
+
+                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12" id="SEARCH_TEXT">
+                      <input type="text" name="SEARCH_TEXT" placeholder="Enter the value" autocomplete="off" class="form-control border-right-0"
+                        id="SEARCH_TEXT_ID">
+                      <div class="input-group-prepend bg-white">
+                        <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+                          <i class="fas fa-search"></i>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12" class='datepicker-here' data-language='en' id="SSL_CALEN">
+                      <input type="text" name="SEARCH_DATE" id="SSL_CALEN_ID" placeholder="Click here" autocomplete="off" class="form-control border-right-0">
+                      <div class="input-group-prepend bg-white">
+                        <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+                          <i class="fas fa-calendar-alt"></i>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-1 col-md-1">
+                      <button class="btn btn-primary" id="btn_search">SEARCH</button>
+                    </div>
+
+
+
+                    <div class="btn-group btn-group-toggle col-lg-4 col-md-4 col-sm-12 col-xs-12" data-toggle="buttons" id="ZONE">
+                      <label class="btn btn-success">
+                        <input type="radio" name="options" id="option1" autocomplete="off">SAFE
+                      </label>
+                      <label class="btn btn-warning">
+                        <input type="radio" name="options" id="option2" autocomplete="off">UNSAFE
+                      </label>
+                      <label class="btn btn-danger">
+                        <input type="radio" name="options" id="option3" autocomplete="off">DANGER
+                      </label>
+                    </div>
+
+                  </div>
+                  <!--END OF ROW-->
+                </form>
+
               </div>
+              <!--WRAPPING THE FORM AROUND1 WITH CARD - BODY-->
             </div>
-
-            <div class="input-group col-lg-3 col-md-3" class='datepicker-here' data-language='en' id="SSL_CALEN" style="padding-left:0px">
-              <input type="text" name="SEARCH_DATE" id="SSL_CALEN_ID" placeholder="CLICK TO ENTER DATE" autocomplete="off" class="form-control border-right-0">
-              <div class="input-group-prepend bg-white">
-                <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
-                  <i class="fas fa-calendar-alt"></i>
-                </span>
-              </div>
-            </div>
-
-            <div class="col-lg-1 col-md-1" style="padding-left:0px">
-              <button class="btn btn-primary" id="btn_search">SEARCH</button>
-            </div>
-            
-            <div class="col-lg-1 col-md-1">
-
-            </div>
-
-            <div class="btn-group btn-group-toggle col-lg-3 col-md-3" data-toggle="buttons" id="ZONE">
-              <label class="btn btn-success">
-                <input type="radio" name="options" id="option1" autocomplete="off">SAFE
-              </label>
-              <label class="btn btn-warning">
-                <input type="radio" name="options" id="option2" autocomplete="off">WARNING
-              </label>
-              <label class="btn btn-danger">
-                <input type="radio" name="options" id="option3" autocomplete="off">DANGER
-              </label>
-            </div>
-
-
-
+            <!--WRAPPING THE FORM AROUND2 WITH CARD-->
           </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <br>
 
+          <div class="col-md-3 col-lg-3 col-xs-12">
+            <div class="sticky-note-header" style="box-shadow: 1px 4px 4px grey;"> <strong>LEGEND</strong>
+              <i class="fas fa-thumbtack float-right"></i>
+            </div>
+            <div class="sticky-note-body" style="box-shadow: 1px 4px 4px grey;">
+                <span ><i class="fas fa-square" style="color: green"></i>&nbsp &nbspSAFE</span><br>
+                <span ><i class="fas fa-square" style="color: yellow"></i>&nbsp &nbspABOUT TO TURN RED</span><br>
+                <span ><i class="fas fa-square" style="color: red"></i>&nbsp &nbspPRONE TO EXPIRE SOON</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <!--END OF CONTAINER-->
+    </div>
+    <!--END OF CARD BODY-->
+  </div>
+  <!--END OF MAIN CARD-->
+
+
+  <br>
 
 
   <!--LAYOUT OPTIONS-->

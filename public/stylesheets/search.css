@@ -1,3 +1,11 @@
+table {
+    counter-reset: tableCount;     
+}
+.counterCell:before {              
+    content: counter(tableCount); 
+    counter-increment: tableCount; 
+}
+
 li:hover {
     color: azure;
 }
@@ -5,4 +13,39 @@ li:hover {
 li
 {
     margin-right: 30px;
+}
+
+/* STICKY NOTES */
+
+.sticky-note {
+    display: block;
+    border-radius: 10px;
+    /* box-shadow: 1px 4px 4px grey; */
+}
+
+.sticky-note-header {
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background-color: #F2F291;
+    position: relative;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    padding: 10px;
+}
+
+.sticky-note-body {
+    background: #f4fc97; /* Old browsers */
+    background: -moz-linear-gradient(top, #f4fc97 0%, #f2fcae 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #f4fc97 0%,#f2fcae 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #f4fc97 0%,#f2fcae 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f4fc97', endColorstr='#f2fcae',GradientType=0 );
+    
+    color: #252525;
+    position: relative;
+    padding: 10px;
+    width: 100%;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    
 }
