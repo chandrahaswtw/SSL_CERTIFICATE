@@ -2,14 +2,7 @@
 $(document).ready(function () {
 
   $('#ZONE').hide();
-
-  //FETCH ALL RECORDS
-  $('#loading').show();
-  $.get('/fetch_all').done(function (data) {
-    //console.log(data.ALL_RECORDS);
-    $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
-    $('#loading').hide();
-  })
+  $('#loading').hide();
 
 //DATE PICKER
 

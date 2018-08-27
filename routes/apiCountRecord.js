@@ -4,7 +4,7 @@ moment().format();
 const {url} = require('./bulkExports');
 
 
-var simplify = (data,color) => {
+var simplify = (data) => {
 
     return new Promise((resolve, reject) => {
 
