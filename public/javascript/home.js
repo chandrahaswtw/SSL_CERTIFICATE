@@ -8,6 +8,9 @@ $(document).ready(function(){
       }
     toastr.info('Please wait','PAGE LOADING');
     $("#TABLEZONE").hide();
+    $("#main").hide();
+   
+
 
    $.get('/home').done(function(data) {
 
@@ -67,7 +70,10 @@ $(document).ready(function(){
 
     // use configuration item and data specified to show chart
     myChart.setOption(option);
-    $("#TABLEZONE").show();
+      $("#TABLEZONE").show();
+      $("#main").show();
+      $("#CHART_TEMP").hide();
+
     //*******CHART SECTION END *******//
    })
 
