@@ -44,7 +44,7 @@
 <body>
     <div id="loading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color:#fff; z-index: 30001; opacity: 0.7;">
         <div style="position: absolute; color: White; top: 35%; left: 42.5%;">
-            <img src="gif/Double_Ring.gif">
+            <img src="gif/Eclipse.gif">
         </div>
     </div>
 
@@ -89,12 +89,12 @@
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="appId">APPLICATION ID</label>
-                            <input type="text" class="form-control" id="appId" name="appId" placeholder="ID">
+                            <input type="text" class="form-control" id="appId" name="appId" placeholder="ID" autocomplete="off" required>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="appName">APPLICATION NAME</label>
-                            <input type="text" class="form-control" id="appName" name="appName" placeholder="Name">
+                            <input type="text" class="form-control" id="appName" name="appName" placeholder="Name" autocomplete="off" required>
                         </div>
                     </div>
 
@@ -112,14 +112,14 @@
 
                         <div class="form-group col-md-6">
                             <label for="serverName">SERVER NAME</label>
-                            <input type="text" class="form-control" id="serverName" name="serverName" placeholder="Name">
+                            <input type="text" class="form-control" id="serverName" name="serverName" placeholder="Name" autocomplete="off">
                         </div>
                     </div>
 
                     <!-- ROW 3 -->
                     <div class="form-group">
                         <label for="portfolioName">PORTFOLIO</label>
-                        <input type="text" class="form-control" id="portfolioName" name="portfolioName" placeholder="Portfolio">
+                        <input type="text" class="form-control" id="portfolioName" name="portfolioName" placeholder="Portfolio" autocomplete="off">
                     </div>
 
                     <!-- ROW 4 -->
@@ -127,7 +127,7 @@
                         <div class="form-group col-md-6">
                             <label for="SSLCertName">SSL CERTIFICATE NAME</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="SSLCertName" name="SSLCertName" placeholder="Name">
+                                <input type="text" class="form-control" id="SSLCertName" name="SSLCertName" placeholder="Name" autocomplete="off">
                                 <div class="input-group-prepend bg-white">
                                     <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                         <i class="fas fa-lock"></i>
@@ -139,7 +139,7 @@
                         <div class="form-group col-md-6">
                             <label for="expDate">EXPIRY DATE</label>
                             <div class="input-group">
-                                <input type="tel" class="form-control" id="expDate" name="expDate" placeholder="Date" class='datepicker-here' data-language='en'>
+                                <input type="tel" class="form-control" id="expDate" name="expDate" placeholder="Date" class='datepicker-here' data-language='en' autocomplete="off" required>
                                 <div class="input-group-prepend bg-white">
                                     <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                         <i class="fas fa-calendar-alt"></i>
@@ -154,7 +154,7 @@
                         <div class="form-group col-md-6">
                             <label for="primaryName">PRIMARY NAME</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="primaryName" name="primaryName" placeholder="Name">
+                                <input type="text" class="form-control" id="primaryName" name="primaryName" placeholder="Name" autocomplete="off">
                                 <div class="input-group-prepend bg-white">
                                     <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                         <i class="fa fa-user"></i>
@@ -166,7 +166,7 @@
                         <div class="form-group col-md-6">
                             <label for="primaryPhone">PRIMARY PHONE NUMBER</label>
                             <div class="input-group">
-                                <input type="tel" class="form-control" id="primaryPhone" name="primaryPhone" placeholder="Phone number">
+                                <input type="tel" class="form-control" id="primaryPhone" name="primaryPhone" placeholder="Phone number" autocomplete="off">
                                 <div class="input-group-prepend bg-white">
                                     <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                         <i class="fas fa-phone"></i>
@@ -180,7 +180,7 @@
                     <div class="form-group">
                         <label for="primaryEmail">PRIMARY EMAIL</label>
                         <div class="input-group">
-                            <input type="email" class="form-control" id="primaryEmail" name="primaryEmail" placeholder="Email">
+                            <input type="email" class="form-control" id="primaryEmail" name="primaryEmail" placeholder="Email" autocomplete="off">
                             <div class="input-group-prepend bg-white">
                                 <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                     <i class="far fa-envelope"></i>
@@ -194,7 +194,7 @@
                         <div class="form-group col-md-6">
                             <label for="secondaryName">SECONDARY NAME</label>
                             <div class="input-group">
-                                <input type="text" class="form-control" id="secondaryName" name="secondaryName" placeholder="Name">
+                                <input type="text" class="form-control" id="secondaryName" name="secondaryName" placeholder="Name" autocomplete="off">
                                 <div class="input-group-prepend bg-white">
                                     <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                         <i class="fa fa-user"></i>
@@ -206,7 +206,7 @@
                         <div class="form-group col-md-6">
                             <label for="secondaryPhone">SECONDARY PHONE NUMBER</label>
                             <div class="input-group">
-                                <input type="tel" class="form-control" id="secondaryPhone" name="secondaryPhone" placeholder="Phone number">
+                                <input type="tel" class="form-control" id="secondaryPhone" name="secondaryPhone" placeholder="Phone number" autocomplete="off">
                                 <div class="input-group-prepend bg-white">
                                     <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                         <i class="fas fa-phone"></i>
@@ -220,7 +220,7 @@
                     <div class="form-group">
                         <label for="secondaryEmail">SECONDARY EMAIL</label>
                         <div class="input-group">
-                            <input type="email" class="form-control" id="secondaryEmail" name="secondaryEmail" placeholder="Email">
+                            <input type="email" class="form-control" id="secondaryEmail" name="secondaryEmail" placeholder="Email" autocomplete="off">
                             <div class="input-group-prepend bg-white">
                                 <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                     <i class="far fa-envelope"></i>
@@ -233,7 +233,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="alertToolName">ALERT TOOL NAME</label>
-                            <input type="text" class="form-control" id="alertToolName" name="alertToolName" placeholder="Tool name">
+                            <input type="text" class="form-control" id="alertToolName" name="alertToolName" placeholder="Tool name" autocomplete="off">
                         </div>
                         <div class="form-group col-md-4" style="text-align: center">
                             <label for="alertMech">ALERT MECHANISM</label>
@@ -245,7 +245,7 @@
                         </div>
                         <div class="form-group col-md-4">
                             <label for="thresholdDays">THRESHOLD LIMIT (DAYS)</label>
-                            <input type="text" class="form-control" id="thresholdDays" name="thresholdDays" placeholder="Days" disabled>
+                            <input type="text" class="form-control" id="thresholdDays" name="thresholdDays" placeholder="Days" disabled autocomplete="off">
                         </div>
                     </div>
 

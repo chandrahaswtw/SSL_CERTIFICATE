@@ -5,16 +5,18 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start" : "node app.js"
+    "start": "node app.js"
   },
   "author": "IBM",
   "license": "ISC",
   "dependencies": {
     "@cloudant/cloudant": "^2.3.0",
+    "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "hbs": "^4.0.1",
+    "moment": "^2.22.2",
     "path": "^0.12.7"
   }
 }

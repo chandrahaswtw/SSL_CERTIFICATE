@@ -1,56 +1,35 @@
-
-// // function add (data) {
-// //  var y = data.reduce(function(acc, x) {
-// //      acc[`${x.name}`] = x.value;
-// //    return acc;
-// //    }, {});
-// // }
+require('dotenv').config();
+const axios = require('axios');
+var moment = require('moment');
+moment().format();
 
 
+var d1 = new moment();
+var d2 = new moment();
+var d3 = new moment('09/15/2018', 'MM-DD-YYYY');
+if (!isNaN(Number(10)))
+t_Days = Number(t_Days);
+else
+t_Days = 30;
+d1 = d1.add((t_Days + 30), 'd');
+d2 = d2.add(t_Days, 'd');
 
-// // add(  [ { name: 'portfolioName', value: '' },
-// //       { name: 'appName', value: '' },
-// //       { name: 'appId', value: '' },
-// //       { name: 'envName', value: '' },
-// //       { name: 'SSLCertName', value: '' },
-// //       { name: 'expDate', value: '' },
-// //       { name: 'serverName', value: '' },
-// //       { name: 'PrimaryName', value: '' },
-// //       { name: 'PrimaryEmail', value: '' },
-// //       { name: 'PrimaryPhone', value: '' },
-// //       { name: 'SecondaryName', value: '' },
-// //       { name: 'SecondaryEmail', value: '' },
-// //       { name: 'SecondaryPhone', value: '' },
-// //       { name: 'alertMech', value: '' },
-// //       { name: 'alertToolName', value: '' },
-// //       { name: 'Threshold', value: '' },
-// //       { name: 'lastTriggerDate', value: '' },
-// //       { name: 'Remarks', value: '' } ] );
+if(moment(d1).isSameOrAfter(d3) && moment(d2).isSameOrBefore(d3))
+console.log('YO MAMA');
 
-// const Cloudant = require('@cloudant/cloudant');
-// require('dotenv').config();
-// var cloudant = Cloudant({account:process.env.account, password:process.env.password});
-// var amanda = cloudant.db.use('dummy');
+console.log('d1 is',d1);
+console.log('d2 is',d2);
+console.log('d3 is',d3);
 
-// amanda.find({
-//   "selector": {
-//      "_id": {
-//         "$gt": "0"
-//      },
-//      "appName": "SMART"
-//   },
-//   "fields": [
-//      "appName",
-//      "_rev",
-//      "appName"
-//   ],
-//   "sort": [
-//      {
-//         "_id": "asc"
-//      }
-//   ]
-// },function(err,result) {console.log(result.docs)}
-// )
-const path = require('path');
 
-console.log(static_files + 'add.html');
+
+
+
+
+
+
+
+
+
+
+

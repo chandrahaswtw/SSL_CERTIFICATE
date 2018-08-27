@@ -37,13 +37,18 @@
   <script src="javascript/third_party/datepicker.min.js"></script>
   <script src="javascript/third_party/datepicker.en.js"></script>
 
+  <!-- MOMENT -->
+  <script src="javascript/third_party/moment.min.js"></script>
+
+
 </head>
 
 <body>
 
+
   <div id="loading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color:#fff; z-index: 30001; opacity: 0.7;">
-    <div style="position: absolute; color: White; top: 35%; left: 42.5%;">
-      <img src="gif/Double_Ring.gif">
+    <div style="position: absolute; color: White; top: 35%; left: 42.5%;">  
+      <img src="gif/Eclipse.gif">
     </div>
   </div>
 
@@ -132,15 +137,15 @@
 
 
 
-                    <div class="btn-group btn-group-toggle col-lg-4 col-md-4 col-sm-12 col-xs-12" data-toggle="buttons" id="ZONE">
+                    <div class="btn-group btn-group-toggle col-lg-6 col-md-6 col-sm-12 col-xs-12" data-toggle="buttons" id="ZONE">
                       <label class="btn btn-success">
-                        <input type="radio" name="options" id="option1" autocomplete="off">SAFE
+                        <input type="radio" name="options" id="GREEN" value = "GREEN" autocomplete="off">SAFE
                       </label>
                       <label class="btn btn-warning">
-                        <input type="radio" name="options" id="option2" autocomplete="off">UNSAFE
+                        <input type="radio" name="options" id="YELLOW" value="YELLOW" autocomplete="off">UNSAFE
                       </label>
                       <label class="btn btn-danger">
-                        <input type="radio" name="options" id="option3" autocomplete="off">DANGER
+                        <input type="radio" name="options" id="RED" value="RED" autocomplete="off">DANGER
                       </label>
                     </div>
 

@@ -2,7 +2,12 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 const bodyParser = require('body-parser');
-const cloudant = require('./routes/cloudant');
+
+const {apiCountRecord} = require('./routes/apiCountRecord');
+const {addRecord} = require('./routes/addRecord.js');
+const {fetchAll} = require('./routes/fetchAll');
+const {searchRecord} = require('./routes/searchRecord');
+const {apiStatusSearch} = require('./routes/apiStatusSearch');
 
 const app = express();
 const port = process.env.PORT || '3000';
@@ -11,10 +16,11 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public/'));
 var static_files = path.join(__dirname, './public/html/')
 
+//********HTML ROUTES ******//
+
 //HOME PAGE
 app.get('/',(req,res)=>{
     res.sendFile(static_files + 'home.html');
-    //cloudant.fetch_all(res);
 })
 
 //ADD PAGE MANUAL
@@ -33,19 +39,26 @@ app.get('/search',(req,res)=>{
 })
 
 
-//**************DUMMY ROUTES**************//
-app.get('/home_details',(req,res)=>{
-    cloudant.fetch_all(res);
-})
+//*********DUMMY ROUTES*********//
 
-
-app.get('/search_details',(req,res)=>{
-    cloudant.search_record(req.query,res);
-
+app.get('/home',(req,res)=>{
+    apiCountRecord(res);
 })
 
 app.get('/add_details',(req,res)=>{
-    cloudant.add_record(req.query,res);
+    addRecord(req.query,res);
+})
+
+app.get('/fetch_all',(req,res)=>{
+    fetchAll(res);
+})
+
+app.get('/search_details',(req,res)=>{
+    searchRecord(req.query,res);
+})
+
+app.get('/radio_search',(req,res)=>{
+    apiStatusSearch(req.query,res);
 })
 
 
