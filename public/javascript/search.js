@@ -4,18 +4,22 @@ $(document).ready(function () {
   $('#ZONE').hide();
   $('#loading').hide();
 
-//DATE PICKER
+  //DATE PICKER
 
-  $(function () {
-    $('#SSL_CALEN_ID').datepicker({
-      language: 'en',
-      autoClose: true,
-      dateFormat: 'mm/dd/yyyy'
-    })
+  $('#SSL_CALEN_ID').datepicker({
+    language: 'en',
+    autoClose: true,
+    dateFormat: 'mm/dd/yyyy'
+  })
+
+
+  //TOOL TIP
+  $('body').tooltip({
+    selector: '[data-toggle="tooltip"]' // tooltip objects will be delegated to the specified targets
   });
 
 
-//OTHER VALIDATIONS
+  //OTHER VALIDATIONS
 
   $('#SSL_CALEN').hide();
   $('#DROP_DOWN').on('change', function () {
@@ -66,7 +70,6 @@ $(document).ready(function () {
     else if ($('#DROP_DOWN').val() == "expStatus") {
       $('#ZONE').show();
       $('input[name="options"]').prop('checked', false);
-      //$("#ZONE").css({'margin-left':'100px'});
       $('#SSL_CALEN_ID').val('');
       $("#SEARCH_TEXT_ID").val('');
       $('#SSL_CALEN').hide();
@@ -76,64 +79,70 @@ $(document).ready(function () {
   })
 
   //HANDLE BARS REGISTER HELPER
+  Handlebars.registerHelper('isStatus', function (expDate) {
 
-  Handlebars.registerHelper('isStatus', function (expDate, t_Days) {
     var d1 = new moment();
     var d2 = new moment();
-    var d3 = new moment(expDate, 'MM-DD-YYYY');
+    var d3 = new moment();
+    var d4 = new moment(expDate, 'MM-DD-YYYY');
+    var d5 = new moment();
     var color;
 
-    if (!isNaN(Number(t_Days)))
-      t_Days = Number(t_Days);
-    else
-      t_Days = 30;
-
     //console.log(t_Days);
-    d1 = d1.add((t_Days + 30), 'd');
-    d2 = d2.add(t_Days, 'd');
+    d1 = d1.add(40, 'd');
+    d2 = d2.add(20, 'd');
+    d3 = d3.add(10, 'd');
 
-    if (moment(d1).isSameOrBefore(d3))
-      color = "green";
-    else if (moment(d1).isSameOrAfter(d3) && moment(d2).isSameOrBefore(d3))
-      color = "yellow";
-    else if (moment(d2).isSameOrAfter(d3))
-      color = "red";
+    if (moment(d1).isSameOrBefore(d4))
+      color = 'green';
+    else if (moment(d1).isAfter(d4) && moment(d2).isSameOrBefore(d4))
+      color = 'yellow';
+    else if (moment(d2).isAfter(d4) && moment(d3).isSameOrBefore(d4))
+      color = 'orange';
+    else if (moment(d3).isSameOrAfter(d4)) color = 'red';
+
+
+    if (d4.diff(d5, 'd') >= 0)
+      var exp = `CERTIFICATE WILL EXPIRE IN ${d4.diff(d5, 'd')} DAYS`;
+    else
+      var exp = `CERTIFICATE ALREADY EXPIRED ${d5.diff(d4, 'd')} DAYS AGO. TAKE IMMEDIATE ACTION`;
 
     if (color)
-      return `<td scope="col" style="color:${color}"><i class="fas fa-square"></i></td>`;
-    else
-      return `<td></td>`;
-  })
+      return `<td scope="col" style="color:${color}">
+    <i class="fas fa-square" data-toggle="tooltip" data-placement="top" title= "${exp}"></i></td>`;
 
-  //FORM SUBMIT
+    else return `<td></td>`;
+  });
+
+
+  //BASIC SEARCH FORM SUBMIT
 
   $('#SEARCH_FORM').on('submit', function (e) {
     e.preventDefault();
     formElements = $('#SEARCH_FORM').serializeArray();
     if (!formElements[0].value)
-        return toastr.warning('SELECT THE SEARCH PARAMETER');
+      return toastr.warning('SELECT THE SEARCH PARAMETER');
     if (!formElements[1].value && $('#DROP_DOWN').val() != "expDate" && $('#DROP_DOWN').val() != "all")
-        return toastr.warning('ENTER THE SEARCH VALUE')
+      return toastr.warning('ENTER THE SEARCH VALUE')
     $('#loading').show();
-    try{
-    $.get('/search_details', { input: formElements })
-      .done(function (data) {
-        if (data.ALL_RECORDS.length == 0) {
-          $('#loading').hide();
-          $('#TABLE_CONTAINER').hide();
-          return toastr.error('NO RECORDS FOUND FOR THE SEARCH');
-        }
-        else {
-          $('#loading').hide();
-          $('#TABLE_CONTAINER').show();
-          $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
-          toastr.clear();
-          return toastr.success(`${data.ALL_RECORDS.length} RECORD(S) FOUND`);
-        }
-      });
+    try {
+      $.get('/search_details', { input: formElements })
+        .done(function (data) {
+          if (data.ALL_RECORDS.length == 0) {
+            $('#loading').hide();
+            $('#TABLE_CONTAINER').hide();
+            return toastr.error('NO RECORDS FOUND FOR THE SEARCH');
+          }
+          else {
+            $('#loading').hide();
+            $('#TABLE_CONTAINER').show();
+            $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
+            toastr.clear();
+            return toastr.success(`${data.ALL_RECORDS.length} RECORD(S) FOUND`);
+          }
+        });
     }
-    catch(e)
-    {
+    catch (e) {
       $('#loading').hide();
       toastr.error('INTERNAL ERROR');
       alert(e.message);
@@ -141,33 +150,34 @@ $(document).ready(function () {
   })
 
 
-   //RADIO BUTTON 
+  //RADIO BUTTON SEARCH
 
-$('input[type="radio"]').on('change',function(){
+  $('input[type="radio"]').on('change', function () {
     $('#loading').show();
-  try{
-    $.get('/radio_search',{radio : $(this).val()})
-      .done(function (data) {
-        if (data.ALL_RECORDS.length == 0) {
-          $('#loading').hide();
-          $('#TABLE_CONTAINER').hide();
-          return toastr.error('NO RECORDS FOUND FOR THE SEARCH');
-        }
-        else {
-          $('#loading').hide();
-          $('#TABLE_CONTAINER').show();
-          $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
-          toastr.clear();
-          return toastr.success(`${data.ALL_RECORDS.length} RECORD(S) FOUND`);
-        }
-      });
+    try {
+      $.get('/radio_search', { radio: $(this).val() })
+        .done(function (data) {
+          if (data.ALL_RECORDS.length == 0) {
+            $('#loading').hide();
+            $('#TABLE_CONTAINER').hide();
+            return toastr.error('NO RECORDS FOUND FOR THE SEARCH');
+            radioColor = "";
+          }
+          else {
+            $('#loading').hide();
+            $('#TABLE_CONTAINER').show();
+            $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
+            toastr.clear();
+            return toastr.success(`${data.ALL_RECORDS.length} RECORD(S) FOUND`);
+            radioColor = "";
+          }
+        });
     }
-    catch(e)
-    {
+    catch (e) {
       $('#loading').hide();
       toastr.error('INTERNAL ERROR');
       alert(e.message);
     }
-})
+  })
 
 })//END FOR DOCUMENT READY

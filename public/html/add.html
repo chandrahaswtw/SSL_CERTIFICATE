@@ -103,7 +103,7 @@
                         <div class="form-group col-md-6">
                             <label for="envName">ENVIRONMENT</label>
                             <select id="envName" name="envName" class="form-control">
-                                <option selected>Choose...</option>
+                                <option selected value="">Choose...</option>
                                 <option value="Production">Production</option>
                                 <option value="Pre-Production">Pre-Production</option>
                                 <option value="Development">Development</option>
@@ -125,21 +125,20 @@
                     <!-- ROW 4 -->
                     <div class="form-row">
                         <div class="form-group col-md-6">
-                            <label for="SSLCertName">SSL CERTIFICATE NAME</label>
-                            <div class="input-group">
-                                <input type="text" class="form-control" id="SSLCertName" name="SSLCertName" placeholder="Name" autocomplete="off">
-                                <div class="input-group-prepend bg-white">
-                                    <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
-                                        <i class="fas fa-lock"></i>
-                                    </span>
-                                </div>
-                            </div>
+                            <label for="certName">CERTIFICATE NAME</label>
+                            <select id="certName" name="certName" class="form-control">
+                                <option selected value="">Choose...</option>
+                                <option value="CERT1">CERT1</option>
+                                <option value="CERT2">CERT2</option>
+                                <option value="CERT3">CERT3</option>
+                            </select>
                         </div>
 
                         <div class="form-group col-md-6">
                             <label for="expDate">EXPIRY DATE</label>
                             <div class="input-group">
-                                <input type="tel" class="form-control" id="expDate" name="expDate" placeholder="Date" class='datepicker-here' data-language='en' autocomplete="off" required>
+                                <input type="text" class="form-control" id="expDate" name="expDate" placeholder="Date" class='datepicker-here' data-language='en'
+                                    autocomplete="off" required>
                                 <div class="input-group-prepend bg-white">
                                     <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                         <i class="fas fa-calendar-alt"></i>
@@ -231,21 +230,17 @@
 
                     <!-- ROW 9 -->
                     <div class="form-row">
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-6">
                             <label for="alertToolName">ALERT TOOL NAME</label>
                             <input type="text" class="form-control" id="alertToolName" name="alertToolName" placeholder="Tool name" autocomplete="off">
                         </div>
-                        <div class="form-group col-md-4" style="text-align: center">
+                        <div class="form-group col-md-6" style="text-align: center">
                             <label for="alertMech">ALERT MECHANISM</label>
                             <br>
                             <label class="switch" class="form-control">
                                 <input type="checkbox" name="alertMech" id="alertMech">
                                 <span class="slider round"></span>
                             </label>
-                        </div>
-                        <div class="form-group col-md-4">
-                            <label for="thresholdDays">THRESHOLD LIMIT (DAYS)</label>
-                            <input type="text" class="form-control" id="thresholdDays" name="thresholdDays" placeholder="Days" disabled autocomplete="off">
                         </div>
                     </div>
 
@@ -272,4 +267,5 @@
 
     <script src="javascript/add.js"></script>
 </body>
+
 </html>

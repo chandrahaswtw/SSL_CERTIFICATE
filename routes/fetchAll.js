@@ -1,39 +1,22 @@
-const {amanda} = require('./cloudant');
+const { amanda } = require('./cloudant');
 
 var query = {
-    "selector": {
-        "_id": {
-            "$gt": "0"
-        }
-    },
-    "fields": [
-        "_id",
-        "appId",
-        "appName",
-        "serverName",
-        "expDate",
-        "thresholdDays"
-    ],
-    "sort": [
-        {
-            "_id": "asc"
-        }
-    ]
+  selector: {
+    _id: {
+      $gt: '0'
+    }
+  },
+  sort: [
+    {
+      _id: 'asc'
+    }
+  ]
 };
 
-var fetchAll = (res) => {
-    amanda.find(query, (err, result) => {   //console.log(result.docs);
-        res.send({ ALL_RECORDS: result.docs });
-    });
-}
+var fetchAll = res => {
+  amanda.find(query, (err, result) => {
+    res.send({ ALL_RECORDS: result.docs });
+  });
+};
 
-module.exports = {fetchAll};
-
-
-
-
-
-
-
-
-
+module.exports = { fetchAll };

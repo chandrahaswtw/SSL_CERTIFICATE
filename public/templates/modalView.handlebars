@@ -1,0 +1,162 @@
+<form id="modalView">
+
+  {{!-- ROW 1 --}}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="appId">APPLICATION ID</label>
+      <input type="text" class="form-control" id="appId" name="appId" autocomplete="off" value="{{ALL_RECORDS.appId}}" disabled>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="appName">APPLICATION NAME</label>
+      <input type="text" class="form-control" id="appName" name="appName" autocomplete="off" disabled value="{{ALL_RECORDS.appName}}">
+    </div>
+  </div>
+
+  {{!-- ROW 2 --}}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="envName">ENVIRONMENT</label>
+      <input type="text" class="form-control" id="envName" name="envName" autocomplete="off" disabled value="{{ALL_RECORDS.envName}}">
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="serverName">SERVER NAME</label>
+      <input type="text" class="form-control" id="serverName" name="serverName" autocomplete="off" disabled value="{{ALL_RECORDS.serverName}}">
+    </div>
+  </div>
+
+  {{!-- ROW 3 --}}
+  <div class="form-group">
+    <label for="portfolioName">PORTFOLIO</label>
+    <input type="text" class="form-control" id="portfolioName" name="portfolioName" autocomplete="off" disabled value="{{ALL_RECORDS.portfolioName}}">
+  </div>
+
+  {{!-- ROW 4 --}}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="certName">CERTIFICATE NAME</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="certName" name="certName" autocomplete="off" disabled value="{{ALL_RECORDS.certName}}">
+        <div class="input-group-prepend bg-white">
+          <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+            <i class="fas fa-lock"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="expDate">EXPIRY DATE (MM/DD/YYYY)</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="expDate" name="expDate" autocomplete="off" disabled value="{{ALL_RECORDS.expDate}}">
+        <div class="input-group-prepend bg-white">
+          <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+            <i class="fas fa-calendar-alt"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{!-- ROW 5 --}}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="primaryName">PRIMARY NAME</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="primaryName" name="primaryName" autocomplete="off" disabled value="{{ALL_RECORDS.primaryName}}">
+        <div class="input-group-prepend bg-white">
+          <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+            <i class="fa fa-user"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="primaryPhone">PRIMARY PHONE NUMBER</label>
+      <div class="input-group">
+        <input type="tel" class="form-control" id="primaryPhone" name="primaryPhone" autocomplete="off" disabled value="{{ALL_RECORDS.primaryPhone}}">
+        <div class="input-group-prepend bg-white">
+          <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+            <i class="fas fa-phone"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{!-- ROW 6 --}}
+  <div class="form-group">
+    <label for="primaryEmail">PRIMARY EMAIL</label>
+    <div class="input-group">
+      <input type="email" class="form-control" id="primaryEmail" name="primaryEmail" autocomplete="off" disabled value="{{ALL_RECORDS.primaryEmail}}">
+      <div class="input-group-prepend bg-white">
+        <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+          <i class="far fa-envelope"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  {{!-- ROW 7 --}}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="secondaryName">SECONDARY NAME</label>
+      <div class="input-group">
+        <input type="text" class="form-control" id="secondaryName" name="secondaryName" autocomplete="off" disabled value="{{ALL_RECORDS.secondaryName}}">
+        <div class="input-group-prepend bg-white">
+          <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+            <i class="fa fa-user"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="secondaryPhone">SECONDARY PHONE NUMBER</label>
+      <div class="input-group">
+        <input type="tel" class="form-control" id="secondaryPhone" name="secondaryPhone" autocomplete="off" disabled value="{{ALL_RECORDS.secondaryPhone}}">
+        <div class="input-group-prepend bg-white">
+          <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+            <i class="fas fa-phone"></i>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {{!-- ROW 8 --}}
+  <div class="form-group">
+    <label for="secondaryEmail">SECONDARY EMAIL</label>
+    <div class="input-group">
+      <input type="email" class="form-control" id="secondaryEmail" name="secondaryEmail" autocomplete="off" disabled value="{{ALL_RECORDS.secondaryEmail}}">
+      <div class="input-group-prepend bg-white">
+        <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+          <i class="far fa-envelope"></i>
+        </span>
+      </div>
+    </div>
+  </div>
+
+  {{!-- ROW 9 --}}
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="alertToolName">ALERT TOOL NAME</label>
+      <input type="text" class="form-control" id="alertToolName" name="alertToolName" autocomplete="off" disabled value="{{ALL_RECORDS.alertToolName}}">
+    </div>
+    <div class="form-group col-md-6" style="text-align: center">
+      <label for="alertMech">ALERT MECHANISM</label>
+      <br> {{#isAlertView ALL_RECORDS.alertMech}} {{/isAlertView}}
+    </div>
+  </div>
+
+  {{!-- ROW 9 --}}
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">REMARKS</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" disabled> 
+    </textarea>
+  </div>
+
+
+</form>

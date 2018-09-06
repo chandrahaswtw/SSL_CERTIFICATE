@@ -14,3 +14,13 @@ li
 {
     margin-right: 30px;
 }
+
+#modalViewTarget input, #modalViewTarget textarea:hover {
+    cursor:not-allowed
+ }
+
+ #modalViewTarget input,  #modalViewTarget textarea {
+    background-color : #fcfcfc;
+ }
+
+ .datepicker { z-index:99999 !important; }

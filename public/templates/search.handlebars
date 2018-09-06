@@ -1,35 +1,39 @@
 <table class="table table-hover shadow p-3 mb-5 bg-white rounded">
     <caption>LIST OF APPLICATIONS & SERVERS</caption>
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">APP ID</th>
-                <th scope="col">APP NAME</th>
-                <th scope="col">SERVER NAME</th>
-                <th scope="col">EXPIRY DATE</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-            </tr>
-            </thead>
-    
-            {{#each ALL_RECORDS}}
-            <tr>
-                <td scope="col" class="counterCell"></td>
-                <td scope="col">{{this.appId}}</td>
-                <td scope="col">{{this.appName}}</td>
-                <td scope="col">{{this.serverName}}</td>
-                <td scope="col">{{this.expDate}}</td>
-                {{#isStatus this.expDate this.thresholdDays}}
-                {{/isStatus}}
-                {{#if this._id}}
-                <td scope="col" id="{{this._id}}" data-toggle="tooltip" data-placement="top" title="CLICK TO VIEW"><i class="fas fa-eye"></i></td>
-                <td scope="col" id="{{this._id}}" data-toggle="tooltip" data-placement="top" title="CLICK TO EDIT"><i class="fas fa-edit"></i></td>
-                {{else}}
-                <td scope="col" id="{{this.id}}" data-toggle="tooltip" data-placement="top" title="CLICK TO VIEW"><i class="fas fa-eye"></i></td>
-                <td scope="col" id="{{this.id}}" data-toggle="tooltip" data-placement="top" title="CLICK TO EDIT"><i class="fas fa-edit"></i></td>
-                {{/if}}
-            </tr>
-            {{/each}}
-        </table>
-    </script>
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">APP ID</th>
+            <th scope="col">APP NAME</th>
+            <th scope="col">SERVER NAME</th>
+            <th scope="col">EXPIRY DATE</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    {{#each ALL_RECORDS}}
+    <tr>
+        <td scope="col" class="counterCell"></td>
+        <td scope="col">{{this.appId}}</td>
+        <td scope="col">{{this.appName}}</td>
+        <td scope="col">{{this.serverName}}</td>
+        <td scope="col">{{this.expDate}}</td>
+
+        {{#isStatus this.expDate}} {{/isStatus}}
+
+        <td scope="col">
+            <button type="button" name="modalViewBtn" style="padding: 0;border: none;background: none" id="{{this._id}}">
+                <i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="CLICK TO VIEW"></i>
+            </button>
+
+        </td>
+        <td scope="col">
+            <button type="button" name="modalEditBtn" style="padding: 0;border: none;background: none" id="{{this._id}}">
+                <i class="fas fa-edit" data-toggle="tooltip" data-placement="top" title="CLICK TO EDIT"></i>
+            </button>
+        </td>
+    </tr>
+    {{/each}}
+</table>

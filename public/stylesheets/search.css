@@ -49,3 +49,15 @@ li
     border-bottom-right-radius: 3px;
     
 }
+
+#modalViewTarget input, #modalViewTarget textarea:hover {
+    cursor:not-allowed
+ }
+
+ #modalViewTarget input,  #modalViewTarget textarea {
+    background-color : #fcfcfc;
+ }
+
+ .datepicker { z-index:99999 !important; }
+
+

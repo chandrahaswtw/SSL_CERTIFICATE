@@ -1,27 +1,39 @@
-<table class="table table-hover">
-   <caption>LIST OF APPLICATIONS & SERVERS</caption>
-            <thead class="thead-dark">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">APP ID</th>
-                <th scope="col">APP NAME</th>
-                <th scope="col">SERVER NAME</th>
-                <th scope="col">EXPIRY DATE</th>
-                <th></th>
-                <th></th>
-            </tr>
-            </thead>
-    
-            {{#each ALL_RECORDS}}
-            <tr>
-                <td scope="col" class="counterCell"></td>
-                <td scope="col">{{this.doc.appId}}</td>
-                <td scope="col">{{this.doc.appName}}</td>
-                <td scope="col">{{this.doc.serverName}}</td>
-                <td scope="col">{{this.doc.expDate}}</td>
-                <td scope="col" id="{{this.doc._id}}"><i class="fas fa-eye" ></i></td>
-                <td scope="col" id="{{this.doc._id}}"><i class="fas fa-edit"></i></td>
-            </tr>
-            {{/each}}
-        </table>
-    </script>
+<table class="table table-hover shadow p-3 mb-5 bg-white rounded">
+    <caption>LIST OF APPLICATIONS & SERVERS</caption>
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">APP ID</th>
+            <th scope="col">APP NAME</th>
+            <th scope="col">SERVER NAME</th>
+            <th scope="col">EXPIRY DATE</th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+
+    {{#each ALL_RECORDS}}
+    <tr>
+        <td scope="col" class="counterCell"></td>
+        <td scope="col">{{this.appId}}</td>
+        <td scope="col">{{this.appName}}</td>
+        <td scope="col">{{this.serverName}}</td>
+        <td scope="col">{{this.expDate}}</td>
+
+        {{#isStatus this.expDate}} {{/isStatus}}
+
+        <td scope="col">
+            <button type="button" name="modalViewBtn" style="padding: 0;border: none;background: none" id="{{this._id}}">
+                <i class="fas fa-eye" data-toggle="tooltip" data-placement="top" title="CLICK TO VIEW"></i>
+            </button>
+
+        </td>
+        <td scope="col">
+            <button type="button" name="modalEditBtn" style="padding: 0;border: none;background: none" id="{{this._id}}">
+                <i class="fas fa-edit" data-toggle="tooltip" data-placement="top" title="CLICK TO EDIT"></i>
+            </button>
+        </td>
+    </tr>
+    {{/each}}
+</table>

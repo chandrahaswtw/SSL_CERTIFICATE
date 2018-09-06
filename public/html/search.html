@@ -8,16 +8,16 @@
 
   <!-- JQUERY -->
   <script src="javascript/third_party/jquery-3.3.1.min.js"></script>
-
-  <!-- JQUERY UI -->
   <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
   <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
   <!-- CUSTOM STYLES -->
   <link rel="stylesheet" href="stylesheets/search.css" />
+  <link rel="stylesheet" href="stylesheets/toggle_switch.css" />
 
   <!-- BOOTSTRAP -->
   <link rel="stylesheet" href="stylesheets/bootstrap.min.css">
+  <script src="javascript/third_party/popper.min.js"></script>
   <script src="javascript/third_party/bootstrap.min.js"></script>
 
   <!-- TOASTR -->
@@ -31,6 +31,8 @@
   <!-- HANDLEBARS -->
   <script src="javascript/third_party/handlebars-v4.0.11.js"></script>
   <script src="templates/search_compiled.js"></script>
+  <script src="templates/modalView_compiled.js"></script>
+  <script src="templates/modalEdit_compiled.js"></script>
 
   <!-- AIR-DATEPICKER -->
   <link href="stylesheets/datepicker.min.css" rel="stylesheet">
@@ -47,8 +49,14 @@
 
 
   <div id="loading" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color:#fff; z-index: 30001; opacity: 0.7;">
-    <div style="position: absolute; color: White; top: 35%; left: 42.5%;">  
+    <div style="position: absolute; color: White; top: 35%; left: 42.5%;">
       <img src="gif/Eclipse.gif">
+    </div>
+  </div>
+
+  <div id="loading1" class="invisible" style="margin: 0px; padding: 0px; position: fixed; right: 0px; top: 0px; width: 100%; height: 100%; background-color:#fff; z-index: 30001; opacity: 0.7;">
+    <div style="position: absolute; color: White;">
+      <img src="gif/Gear_small.gif">
     </div>
   </div>
 
@@ -138,17 +146,19 @@
 
 
                     <div class="btn-group btn-group-toggle col-lg-6 col-md-6 col-sm-12 col-xs-12" data-toggle="buttons" id="ZONE">
-                      <label class="btn btn-success">
-                        <input type="radio" name="options" id="GREEN" value = "GREEN" autocomplete="off">SAFE
+                      <label class="btn" style="background-color: green" data-toggle="tooltip" data-placement="top" title="IMPLEMENTED">
+                        <input type="radio" name="options" id="GREEN" value="GREEN" autocomplete="off">&nbsp &nbsp &nbsp
                       </label>
-                      <label class="btn btn-warning">
-                        <input type="radio" name="options" id="YELLOW" value="YELLOW" autocomplete="off">UNSAFE
+                      <label class="btn" style="background-color: yellow" data-toggle="tooltip" data-placement="bottom" title="DUE (IN 20 DAYS)">
+                        <input type="radio" name="options" id="YELLOW" value="YELLOW" autocomplete="off">&nbsp &nbsp &nbsp
                       </label>
-                      <label class="btn btn-danger">
-                        <input type="radio" name="options" id="RED" value="RED" autocomplete="off">DANGER
+                      <label class="btn" style="background-color: orange" data-toggle="tooltip" data-placement="top" title="NEARING DUE DATE">
+                        <input type="radio" name="options" id="ORANGE" value="ORANGE" autocomplete="off">&nbsp &nbsp &nbsp
+                      </label>
+                      <label class="btn" style="background-color: red" data-toggle="tooltip" data-placement="right" title="OVERDUE">
+                        <input type="radio" name="options" id="RED" value="RED" autocomplete="off">&nbsp &nbsp &nbsp
                       </label>
                     </div>
-
                   </div>
                   <!--END OF ROW-->
                 </form>
@@ -160,13 +170,22 @@
           </div>
 
           <div class="col-md-3 col-lg-3 col-xs-12">
-            <div class="sticky-note-header" style="box-shadow: 1px 4px 4px grey;"> <strong>LEGEND</strong>
+            <div class="sticky-note-header" style="box-shadow: 1px 4px 4px grey;">
+              <strong>LEGEND</strong>
               <i class="fas fa-thumbtack float-right"></i>
             </div>
             <div class="sticky-note-body" style="box-shadow: 1px 4px 4px grey;">
-                <span ><i class="fas fa-square" style="color: green"></i>&nbsp &nbspSAFE</span><br>
-                <span ><i class="fas fa-square" style="color: yellow"></i>&nbsp &nbspABOUT TO TURN RED</span><br>
-                <span ><i class="fas fa-square" style="color: red"></i>&nbsp &nbspPRONE TO EXPIRE SOON</span>
+              <span>
+                <i class="fas fa-square" style="color: green"></i>&nbsp &nbspIMPLEMENTED</span>
+              <br>
+              <span>
+                <i class="fas fa-square" style="color: yellow"></i>&nbsp &nbspDUE (IN 20 DAYS)</span>
+              <br>
+              <span>
+                <i class="fas fa-square" style="color: orange"></i>&nbsp &nbspNEARING DUE DATE</span>
+              <br>
+              <span>
+                <i class="fas fa-square" style="color: red"></i>&nbsp &nbspOVER DUE</span>
             </div>
           </div>
         </div>
@@ -187,7 +206,63 @@
     <div id="TABLE_CONTAINER"></div>
   </div>
 
+
+  <!-- MODAL VIEW-->
+  <div class="modal fade" id="MODAL_VIEW" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            <i class="fas fa-eye"></i>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" id="modalViewTarget">
+
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalViewClose">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -->
+
+  <!-- MODAL EDIT-->
+  <div class="modal fade" id="MODAL_EDIT" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">
+            <i class="fas fa-edit"></i>
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid" id="modalEditTarget">
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="modalViewClose">Close</button>
+          <button type="button" class="btn btn-primary" id="modalSave">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- -->
+
+
   <script src="javascript/search.js"></script>
+  <script src="javascript/modalView.js"></script>
+  <script src="javascript/modalEdit.js"></script>
 
 </body>
 
