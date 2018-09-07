@@ -16,6 +16,13 @@ $(document).ready(function () {
     selector: '[data-toggle="tooltip"]' // tooltip objects will be delegated to the specified targets
   });
 
-  initiate_home(function cb() { toastr.clear(); });
+  initiate_home(function cb() {
+    toastr.clear();
+    $.fn.dataTable.moment('MM/DD/YYYY');
+    $('#HOME_TABLE').DataTable({
+      "order": [[4, "asc"]]
+    });
+
+  });
 
 });

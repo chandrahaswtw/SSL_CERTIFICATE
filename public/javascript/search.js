@@ -12,6 +12,8 @@ $(document).ready(function () {
     dateFormat: 'mm/dd/yyyy'
   })
 
+  //$('#TABLE_CONTAINER').DataTable();
+
 
   //TOOL TIP
   $('body').tooltip({
@@ -92,8 +94,14 @@ $(document).ready(function () {
       toastr.clear();
       if (count == 0)
         toastr.error('NO RECORDS FOUND FOR THE SEARCH');
-      else
+      else {
+
+        $.fn.dataTable.moment('MM/DD/YYYY');
+        $('#SEARCH_TABLE').DataTable({
+          "order": [[4, "asc"]]
+        });
         toastr.success(`${count} RECORD(S) FOUND`);
+      }
     });
   })
 
@@ -106,8 +114,13 @@ $(document).ready(function () {
       toastr.clear();
       if (count == 0)
         toastr.error('NO RECORDS FOUND FOR THE SEARCH');
-      else
+      else {
+        $.fn.dataTable.moment('MM/DD/YYYY');
+        $('#SEARCH_TABLE').DataTable({
+          "order": [[4, "asc"]]
+        });
         toastr.success(`${count} RECORD(S) FOUND`);
+      }
     });
   })
 
