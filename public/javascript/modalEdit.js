@@ -26,7 +26,7 @@ $(document).ready(function () {
     </label>`
   });
 
-  //EDIT PAGE APPEARANCE
+  //EDIT MODAL APPEARANCE
   $("body").on("click", "[name='modalEditBtn']", function (e) {
     e.stopPropagation();
     e.preventDefault();
@@ -50,7 +50,7 @@ $(document).ready(function () {
     })
   })
 
-  //SAVING THE EDITED VALUES
+  //SAVING THE EDITED VALUES ON MODAL
   $('#modalSave').on('click', function (e) {
     e.preventDefault();
     $('#modalSave').attr('disabled', true).text('Saving changes...');
@@ -65,12 +65,35 @@ $(document).ready(function () {
         $('#modalSave').removeAttr('disabled').text('Save changes');
       }
       else {
-        toastr.success('REFERSH THE SEARCH TO VIEW THE UPDATED RESULTS', 'RECORD UPDATED');
         $('#modalSave').attr('_rev', data._rev);
         $('#modalSave').removeAttr('disabled').text('Save changes');
+        try {
+          initiate_home(function cb() { toastr.clear(); toastr.success('RECORD UPDATED'); });
+        }
+        catch (e) { dummy(e); }
+        try {
+          if ($('#DROP_DOWN').val() != 'expStatus')
+            form_search(function cb(count) {
+              toastr.clear();
+              toastr.success('RECORD UPDATED');
+            });
+          else
+            radio_search(function cb(count) {
+              toastr.clear();
+              toastr.success('RECORD UPDATED');
+            });
+        }
+        catch (e) { dummy(e); }
       }
     });
+
+    function dummy(e) { }
   })
+
+  $('#MODAL_EDIT').on('hidden.bs.modal', function () {
+    toastr.remove();
+  })
+
 
 
 
