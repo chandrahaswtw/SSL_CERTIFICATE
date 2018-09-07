@@ -68,17 +68,19 @@ $(document).ready(function () {
         $('#modalSave').attr('_rev', data._rev);
         $('#modalSave').removeAttr('disabled').text('Save changes');
         try {
-          initiate_home(function cb() { toastr.clear(); toastr.success('RECORD UPDATED'); });
+          initiate_home(function cb() { dataTab('HOME_TABLE'); toastr.clear(); toastr.success('RECORD UPDATED'); });
         }
         catch (e) { dummy(e); }
         try {
           if ($('#DROP_DOWN').val() != 'expStatus')
             form_search(function cb(count) {
+              dataTab('SEARCH_TABLE');
               toastr.clear();
               toastr.success('RECORD UPDATED');
             });
           else
             radio_search(function cb(count) {
+              dataTab('SEARCH_TABLE');
               toastr.clear();
               toastr.success('RECORD UPDATED');
             });
@@ -94,9 +96,4 @@ $(document).ready(function () {
     toastr.remove();
   })
 
-
-
-
-
-
-})
+}) // END OF DOCUMENT READY

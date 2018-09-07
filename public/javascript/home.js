@@ -18,11 +18,7 @@ $(document).ready(function () {
 
   initiate_home(function cb() {
     toastr.clear();
-    $.fn.dataTable.moment('MM/DD/YYYY');
-    $('#HOME_TABLE').DataTable({
-      "order": [[4, "asc"]]
-    });
-
+    dataTab('HOME_TABLE');
   });
 
 });

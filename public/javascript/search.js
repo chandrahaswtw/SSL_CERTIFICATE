@@ -81,7 +81,6 @@ $(document).ready(function () {
   })
 
   //BASIC SEARCH FORM SUBMIT
-
   $('#SEARCH_FORM').on('submit', function (e) {
     e.preventDefault();
     formElements = $('#SEARCH_FORM').serializeArray();
@@ -95,11 +94,7 @@ $(document).ready(function () {
       if (count == 0)
         toastr.error('NO RECORDS FOUND FOR THE SEARCH');
       else {
-
-        $.fn.dataTable.moment('MM/DD/YYYY');
-        $('#SEARCH_TABLE').DataTable({
-          "order": [[4, "asc"]]
-        });
+        dataTab('SEARCH_TABLE');
         toastr.success(`${count} RECORD(S) FOUND`);
       }
     });
@@ -107,7 +102,6 @@ $(document).ready(function () {
 
 
   //RADIO BUTTON SEARCH
-
   $('input[type="radio"]').on('change', function () {
     $('#loading').show();
     radio_search(function (count) {
@@ -115,13 +109,21 @@ $(document).ready(function () {
       if (count == 0)
         toastr.error('NO RECORDS FOUND FOR THE SEARCH');
       else {
-        $.fn.dataTable.moment('MM/DD/YYYY');
-        $('#SEARCH_TABLE').DataTable({
-          "order": [[4, "asc"]]
-        });
+        dataTab('SEARCH_TABLE');
         toastr.success(`${count} RECORD(S) FOUND`);
       }
     });
   })
+
+  function dataTab_search() {
+    $.fn.dataTable.moment('MM/DD/YYYY');
+    $('#SEARCH_TABLE').DataTable({
+      columnDefs: [{
+        targets: [0, 1, 2, 5, 6, 7],
+        orderable: false
+      }],
+      "order": [[4, "asc"]]
+    });
+  }
 
 })//END FOR DOCUMENT READY
