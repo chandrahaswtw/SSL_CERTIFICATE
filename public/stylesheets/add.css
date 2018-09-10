@@ -6,3 +6,8 @@ li
 {
     margin-right: 30px;
 }
+
+div.hidden
+{
+   display: none
+}

@@ -60,4 +60,9 @@ li
 
  .datepicker { z-index:99999 !important; }
 
+div.hidden
+{
+   display: none
+}
+
 

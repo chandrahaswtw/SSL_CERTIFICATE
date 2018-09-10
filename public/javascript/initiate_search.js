@@ -3,20 +3,18 @@ function form_search(callback) {
     $.get('/search_details', { input: formElements })
       .done(function (data) {
         if (data.ALL_RECORDS.length == 0) {
-          $('#loading').hide();
-          $('#TABLE_CONTAINER').hide();
+          $('#TABLE_CONTAINER').addClass('hidden');
           return callback(0);
         }
         else {
-          $('#loading').hide();
-          $('#TABLE_CONTAINER').show();
+          $('#TABLE_CONTAINER').removeClass('hidden');
           $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
           return callback(data.ALL_RECORDS.length);
         }
       });
   }
   catch (e) {
-    $('#loading').hide();
+    $('#loading').addClass('hidden');
     toastr.clear();
     toastr.error('INTERNAL ERROR');
     alert(e.message);
@@ -29,21 +27,19 @@ function radio_search(callback) {
     $.get('/radio_search', { radio: $('input[type="radio"]:checked').val() })
       .done(function (data) {
         if (data.ALL_RECORDS.length == 0) {
-          $('#loading').hide();
-          $('#TABLE_CONTAINER').hide();
+          $('#TABLE_CONTAINER').addClass('hidden');
           return callback(0);
         }
         else {
-          $('#loading').hide();
-          $('#TABLE_CONTAINER').show();
+          $('#TABLE_CONTAINER').removeClass('hidden');
           $('#TABLE_CONTAINER').html(Handlebars.templates['search']({ ALL_RECORDS: data.ALL_RECORDS }));
           return callback(data.ALL_RECORDS.length);
-          //return toastr.success(`${data.ALL_RECORDS.length} RECORD(S) FOUND`);
+
         }
       });
   }
   catch (e) {
-    $('#loading').hide();
+    $('#loading').addClass('hidden');
     toastr.clear();
     toastr.error('INTERNAL ERROR');
     alert(e.message);

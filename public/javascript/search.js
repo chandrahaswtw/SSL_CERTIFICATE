@@ -1,18 +1,13 @@
 
 $(document).ready(function () {
 
-  $('#ZONE').hide();
-  $('#loading').hide();
-
   //DATE PICKER
-
   $('#SSL_CALEN_ID').datepicker({
     language: 'en',
     autoClose: true,
     dateFormat: 'mm/dd/yyyy'
   })
 
-  //$('#TABLE_CONTAINER').DataTable();
 
 
   //TOOL TIP
@@ -23,60 +18,59 @@ $(document).ready(function () {
 
   //OTHER VALIDATIONS
 
-  $('#SSL_CALEN').hide();
   $('#DROP_DOWN').on('change', function () {
 
     if ($('#DROP_DOWN').val() == "expDate") {
-      $('#ZONE').hide();
+      $('#ZONE').addClass('hidden');
       $('input[name="options"]').prop('checked', false);
-      $("#btn_search").show();
+      $("#btn_div").removeClass('hidden');
       $("#SEARCH_TEXT_ID").val('');
       $('#SSL_CALEN_ID').val('');
-      $("#SEARCH_TEXT").hide();
-      $('#SSL_CALEN').show();
+      $("#SEARCH_TEXT").addClass('hidden');
+      $('#SSL_CALEN').removeClass('hidden');
       toastr.info('POPULATE DATA LESS THAN THE SELECTED DATE');
     }
     else if ($('#DROP_DOWN').val() == "serverName") {
-      $('#ZONE').hide();
+      $('#ZONE').addClass('hidden');
       $('input[name="options"]').prop('checked', false);
-      $("#btn_search").show();
+      $("#btn_div").removeClass('hidden');
       $("#SEARCH_TEXT_ID").removeAttr('disabled');
       $("#SEARCH_TEXT_ID").val('');
       $("#SEARCH_TEXT_ID").attr('placeholder', 'Enter Sever Name');
       $('#SSL_CALEN_ID').val('');
-      $("#SEARCH_TEXT").show();
-      $('#SSL_CALEN').hide();
+      $("#SEARCH_TEXT").removeClass('hidden');
+      $('#SSL_CALEN').addClass('hidden');
     }
     else if ($('#DROP_DOWN').val() == "appId") {
-      $('#ZONE').hide();
+      $('#ZONE').addClass('hidden');
       $('input[name="options"]').prop('checked', false);
-      $("#btn_search").show();
+      $("#btn_div").removeClass('hidden');
       $("#SEARCH_TEXT_ID").removeAttr('disabled');
       $("#SEARCH_TEXT_ID").val('');
       $("#SEARCH_TEXT_ID").attr('placeholder', 'Enter App ID');
       $('#SSL_CALEN_ID').val('');
-      $("#SEARCH_TEXT").show();
-      $('#SSL_CALEN').hide();
+      $("#SEARCH_TEXT").removeClass('hidden');
+      $('#SSL_CALEN').addClass('hidden');
     }
     else if ($('#DROP_DOWN').val() == "all") {
-      $('#ZONE').hide();
+      $('#ZONE').addClass('hidden');
       $('input[name="options"]').prop('checked', false);
-      $("#btn_search").show();
+      $("#btn_div").removeClass('hidden');
       $("#SEARCH_TEXT_ID").val('');
       $("#SEARCH_TEXT_ID").attr('placeholder', 'Fetch all records');
       $("#SEARCH_TEXT_ID").attr('disabled', 'disabled');
       $('#SSL_CALEN_ID').val('');
-      $("#SEARCH_TEXT").show();
-      $('#SSL_CALEN').hide();
+      $("#SEARCH_TEXT").removeClass('hidden');
+      $('#SSL_CALEN').addClass('hidden');
     }
     else if ($('#DROP_DOWN').val() == "expStatus") {
-      $('#ZONE').show();
+      $('#ZONE').removeClass('hidden');
       $('input[name="options"]').prop('checked', false);
       $('#SSL_CALEN_ID').val('');
       $("#SEARCH_TEXT_ID").val('');
-      $('#SSL_CALEN').hide();
-      $("#SEARCH_TEXT").hide();
-      $("#btn_search").hide();
+      $('#SSL_CALEN').addClass('hidden');
+      $("#SEARCH_TEXT").addClass('hidden');
+      $("#btn_div").addClass('hidden');
     }
   })
 
@@ -84,15 +78,23 @@ $(document).ready(function () {
   $('#SEARCH_FORM').on('submit', function (e) {
     e.preventDefault();
     formElements = $('#SEARCH_FORM').serializeArray();
-    if (!formElements[0].value)
+    if (!formElements[0].value) {
+      toastr.clear();
       return toastr.warning('SELECT THE SEARCH PARAMETER');
-    if (!formElements[1].value && $('#DROP_DOWN').val() != "expDate" && $('#DROP_DOWN').val() != "all")
-      return toastr.warning('ENTER THE SEARCH VALUE')
-    $('#loading').show();
+    }
+    if (!formElements[1].value && $('#DROP_DOWN').val() != "expDate" && $('#DROP_DOWN').val() != "all") {
+      toastr.clear();
+      $('#SEARCH_TEXT_ID').focus();
+      return toastr.warning('ENTER THE SEARCH VALUE');
+
+    }
+    $('#loading').removeClass('hidden');
     form_search(function (count) {
       toastr.clear();
-      if (count == 0)
+      $('#loading').addClass('hidden');
+      if (count == 0) {
         toastr.error('NO RECORDS FOUND FOR THE SEARCH');
+      }
       else {
         dataTab('SEARCH_TABLE');
         toastr.success(`${count} RECORD(S) FOUND`);
@@ -103,9 +105,10 @@ $(document).ready(function () {
 
   //RADIO BUTTON SEARCH
   $('input[type="radio"]').on('change', function () {
-    $('#loading').show();
+    $('#loading').removeClass('hidden');
     radio_search(function (count) {
       toastr.clear();
+      $('#loading').addClass('hidden');
       if (count == 0)
         toastr.error('NO RECORDS FOUND FOR THE SEARCH');
       else {

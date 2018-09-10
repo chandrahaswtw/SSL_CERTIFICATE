@@ -100,7 +100,6 @@ function initiate_home(callback) {
 
   //FETCH ALL RECORDS
   $.get('/fetch_all').done(function (data) {
-    console.log(data.ALL_RECORDS);
     $('#TABLE_CONTAINER').html(
       Handlebars.templates['home']({ ALL_RECORDS: data.ALL_RECORDS })
     );
