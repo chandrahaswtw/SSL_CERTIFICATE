@@ -6,11 +6,11 @@ table {
     counter-increment: tableCount; 
 }
 
-li:hover {
+nav li:hover {
     color: azure;
 }
 
-li
+nav li
 {
     margin-right: 30px;
 }
