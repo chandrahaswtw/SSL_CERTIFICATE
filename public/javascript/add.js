@@ -1,5 +1,6 @@
 
-var form_elements
+var form_elements;
+var unsaved = false;
 $(document).ready(function () {
 
   $(function () {
@@ -23,11 +24,13 @@ $(document).ready(function () {
     $.get('/add_details', { input: form_elements })
       .done(function (data) {
         $('#loading').addClass('hidden');
-        $("#frmadd")[0].reset();
-        if (data.status == "ERROR")
+        if (data.status == "ERROR") {
           toastr.error('INTERNAL ERROR');
+        }
         else {
+          $("#frmadd")[0].reset();
           toastr.success('RECORD ADDED');
+          unsaved = false;
         }
       }, 'json');
   })
@@ -35,10 +38,10 @@ $(document).ready(function () {
   $('#btn_cancel').on('click', function () {
     $("#frmadd")[0].reset();
     alert('FORM CLEARED');
-    //window.location.href = "/";
+    unsaved = false;
   })
 
-  var unsaved = false;
+
 
   $(":input").change(function () { //trigers change in all input fields including text type
     unsaved = true;
@@ -50,5 +53,4 @@ $(document).ready(function () {
     }
   }
   window.onbeforeunload = unloadPage;
-
 })

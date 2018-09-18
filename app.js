@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 require('dotenv').config();
 const bodyParser = require('body-parser');
+const http = require('http');
 
 const { apiCountRecord } = require('./routes/apiCountRecord');
 const { addRecord } = require('./routes/addRecord.js');
@@ -10,13 +11,15 @@ const { searchRecord } = require('./routes/searchRecord');
 const { apiStatusSearch } = require('./routes/apiStatusSearch');
 const { modalView } = require('./routes/modalView');
 const { modalUpdate } = require('./routes/modalUpdate');
+const { fill_Excel } = require('./routes/excel_download');
 
 const app = express();
 const port = process.env.PORT || '3000';
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, './public/')));
-var static_files = path.join(__dirname, './public/html/')
+var static_files = path.join(__dirname, './public/html/');
+var server = http.createServer(app);
 
 //********HTML ROUTES ******//
 
@@ -39,6 +42,12 @@ app.get('/bulk_upload', (req, res) => {
 app.get('/search', (req, res) => {
     res.sendFile(static_files + 'search.html');;
 })
+
+//EXCEL_DOWNLOAD
+app.get('/download', function (req, res) {
+    file = path.join(__dirname, 'CERTIFICATE STATUS.xlsx');
+    fill_Excel(res, file);
+});
 
 
 //*********OTHER ROUTES*********//
@@ -75,4 +84,4 @@ app.get('/modal_update', (req, res) => {
 
 
 //*******************APP LISTEN ************//
-app.listen(port, () => { console.log('APP STARTED') });
+server.listen(port, () => { console.log('APP STARTED') });

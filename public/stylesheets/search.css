@@ -65,4 +65,6 @@ div.hidden
    display: none
 }
 
-
+select::-ms-expand {
+    -webkit-appearance: none;
+}
