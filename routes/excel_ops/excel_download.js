@@ -1,4 +1,4 @@
-const { amanda } = require('./cloudant');
+const { amanda } = require('./../record_ops/cloudant');
 const Excel = require('exceljs');
 var moment = require('moment');
 moment().format();
@@ -118,8 +118,6 @@ async function fill_Excel(res, file) {
         }
       });
     });
-
-
 
   }
   catch (e) {

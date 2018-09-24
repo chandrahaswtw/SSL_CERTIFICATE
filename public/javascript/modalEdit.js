@@ -1,7 +1,5 @@
 $(document).ready(function () {
 
-  $('#loading1').hide();
-
   toastr.options = {
     progressBar: false,
     showDuration: "300",
@@ -31,6 +29,7 @@ $(document).ready(function () {
     e.stopPropagation();
     e.preventDefault();
     $('#modalSave').attr('_id', this.id);
+    $('#modalSave').attr('_rev', $(this).attr('_rev'));
     $.get('/modal_view', { BTN_ID: this.id }).done(function (data) {
       $('#modalSave').attr('_rev', data.ALL_RECORDS[0]._rev);
       var $html = $(Handlebars.templates['modalEdit']({ ALL_RECORDS: data.ALL_RECORDS[0] }));
@@ -55,9 +54,12 @@ $(document).ready(function () {
     e.preventDefault();
     $('#modalSave').attr('disabled', true).text('Saving changes...');
     form_elements = $('#modalEdit').serializeArray();
-    if (!$("#alertMech").is(':checked')) {
+
+    console.log(form_elements);
+    if (!$("#modalEdit input[name='alertMech']").is(':checked')) {
       form_elements.push({ name: "alertMech", value: `off` });
     }
+
     form_elements.unshift({ name: "_id", value: $('#modalSave').attr('_id') }, { name: "_rev", value: $('#modalSave').attr('_rev') });
     $.get('/modal_update', { input: form_elements }).done(function (data) {
       if (data.status == "ERROR") {

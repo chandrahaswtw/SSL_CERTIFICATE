@@ -28,7 +28,5 @@ $(document).ready(function () {
       $('#MODAL_VIEW').modal('show');
     })
 
-
-
   })
 })

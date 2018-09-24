@@ -15,9 +15,13 @@ templates['home'] = template({"1":function(container,depth0,helpers,partials,dat
     + ((stack1 = (helpers.isStatus || (depth0 && depth0.isStatus) || helpers.helperMissing).call(depth0 != null ? depth0 : (container.nullContext || {}),(depth0 != null ? depth0.expDate : depth0),{"name":"isStatus","hash":{},"fn":container.program(2, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
     + "\r\n\r\n        <td scope=\"col\">\r\n            <button type=\"button\" name=\"modalViewBtn\" style=\"padding: 0;border: none;background: none\" id=\""
     + alias2(alias1((depth0 != null ? depth0._id : depth0), depth0))
+    + "\" _rev=\""
+    + alias2(alias1((depth0 != null ? depth0._rev : depth0), depth0))
     + "\">\r\n                <i class=\"fas fa-eye\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"CLICK TO VIEW\"></i>\r\n            </button>\r\n\r\n        </td>\r\n        <td scope=\"col\">\r\n            <button type=\"button\" name=\"modalEditBtn\" style=\"padding: 0;border: none;background: none\" id=\""
     + alias2(alias1((depth0 != null ? depth0._id : depth0), depth0))
-    + "\">\r\n                <i class=\"fas fa-edit\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"CLICK TO EDIT\"></i>\r\n            </button>\r\n        </td>\r\n    </tr>\r\n";
+    + "\" _rev=\""
+    + alias2(alias1((depth0 != null ? depth0._rev : depth0), depth0))
+    + "\">\r\n                <i class=\"fas fa-edit \" data-toggle=\"tooltip \" data-placement=\"top \" title=\"CLICK TO EDIT \"></i>\r\n            </button>\r\n        </td>\r\n    </tr>\r\n";
 },"2":function(container,depth0,helpers,partials,data) {
     return " ";
 },"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {

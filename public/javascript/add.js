@@ -37,7 +37,7 @@ $(document).ready(function () {
 
   $('#btn_cancel').on('click', function () {
     $("#frmadd")[0].reset();
-    alert('FORM CLEARED');
+    $('#CLEAR_MODAL_VIEW').modal('show');
     unsaved = false;
   })
 
