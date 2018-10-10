@@ -60,7 +60,7 @@ function sendMail(res, email, passwordNew) {
   <p>Hi,</p> 
   <p>The password for your Certificate Validation Tool Account was successfully changed.</p>
   <p> Your new password is : <span style="color:red"><strong>${passwordNew}</strong></span></p>
-  <p> Click <a href= \"http://www.google.com\">here</a> to Log On !</p>
+  <p> Click <a href= "https://still-mesa-47934.herokuapp.com/">here</a> to Log On !</p>
   <br/>
   <h6>This mail was system generated. Please do not respond.</h6>`
 

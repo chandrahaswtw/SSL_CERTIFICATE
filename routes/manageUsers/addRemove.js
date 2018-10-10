@@ -56,7 +56,7 @@ function sendMail(req, res, email, passwordNew) {
   <p>This is with reference to the credentials for your account.</p>
   <p>Your IBM notes ID will serve as the login ID.</p>
   <p>Password :  <span style="color:red"><strong>${passwordNew}</strong></span></p>
-  <p> Click <a href= "http://www.google.com">here</a> to Log On !</p>
+  <p> Click <a href= "https://still-mesa-47934.herokuapp.com/">here</a> to Log On !</p>
   <br/>
   <h6>This mail has been sent by an automation. Please do not respond.</h6>`;
 
