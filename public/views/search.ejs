@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CVT | SEARCH</title>
+
+  <%- include partials/script.ejs %>
+    <!-- CUSTOM STYLES -->
+    <link rel="stylesheet" href="stylesheets/search.css" />
+
+</head>
+
+<body>
+
+  <%- include partials/loader.ejs %>
+
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top shadow">
+      <!-- <div class="container"> -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active nohover">
+            <a class="navbar-brand" href="/">
+              <h5 class="text-white">
+                <i class="fab fa-expeditedssl"></i>
+                &nbsp CVT</h4>
+            </a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              HOME
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              ADD
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/add">MANUAL</a>
+              <a class="dropdown-item" href="/bulk_upload">BULK UPLOAD</a>
+          </li>
+
+
+          <li class="nav-item active">
+            <a class="nav-link" href="/search">
+              SEARCH
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/download">
+              <i class="fas fa-download"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown" id="ACT_DD">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <i class="fas fa-user-circle"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/changePassword">CHANGE PASSWORD</a>
+              <a class="dropdown-item" href="/manageUsers">MANAGE USERS</a>
+              <a class="dropdown-item" href="/logout">LOG OUT</a>
+          </li>
+
+        </ul>
+        </div>
+        </div>
+        <!-- </div> -->
+    </nav>
+
+    <div class="card bg-light">
+      <div class="card-body" style="min-height: 115px; margin-top:30px;">
+        <div class="container">
+
+
+          <div class="row">
+            <div class="col-lg-9 col-md-9">
+
+              <div class="card shadow p-3 mb-5 bg-white rounded">
+                <!--BEGINNING OF WRAPPER 1-->
+                <div class="card-body" style="text-align: center">
+                  <!--BEGINNING OF WRAPPER 2-->
+
+                  <form id="SEARCH_FORM">
+                    <div class="row">
+
+
+                      <div class="col-lg-5 col-md-5">
+                        <select id="DROP_DOWN" class="form-control" name="envName">
+                          <option value="">Choose...</option>
+                          <option value="all">ALL</option>
+                          <option value="appId">APP ID</option>
+                          <option value="serverName">SERVER</option>
+                          <option value="expDate">SSL EXPIRY DATE</option>
+                          <option value="expStatus">SSL EXPIRY STATUS</option>
+                        </select>
+                      </div>
+
+                      <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12" id="SEARCH_TEXT">
+                        <input type="text" name="SEARCH_TEXT" placeholder="Enter the value" autocomplete="off" class="form-control border-right-0"
+                          id="SEARCH_TEXT_ID">
+                        <div class="input-group-prepend bg-white">
+                          <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+                            <i class="fas fa-search"></i>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="input-group col-lg-5 col-md-5 col-sm-12 col-xs-12 hidden" data-language='en' id="SSL_CALEN">
+                        <input type="text" name="SEARCH_DATE" id="SSL_CALEN_ID" placeholder="Click here" autocomplete="off" class="form-control border-right-0">
+                        <div class="input-group-prepend bg-white">
+                          <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+                            <i class="fas fa-calendar-alt"></i>
+                          </span>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-1 col-md-1" id="btn_div">
+                        <button class="btn btn-primary" id="btn_search">SEARCH</button>
+                      </div>
+
+
+                      <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class='row'>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+                          <div class="btn-group btn-group-toggle col-lg-6 col-md-6 col-sm-6 col-xs-6 hidden" align="center" data-toggle="buttons" id="ZONE">
+                            <label class="btn" style="background-color: green" data-toggle="tooltip" data-placement="top" title="IMPLEMENTED">
+                              <input type="radio" name="options" id="GREEN" value="GREEN" autocomplete="off">&nbsp &nbsp &nbsp
+                            </label>
+                            <label class="btn" style="background-color: yellow" data-toggle="tooltip" data-placement="bottom" title="DUE (IN 20 DAYS)">
+                              <input type="radio" name="options" id="YELLOW" value="YELLOW" autocomplete="off">&nbsp &nbsp &nbsp
+                            </label>
+                            <label class="btn" style="background-color: orange" data-toggle="tooltip" data-placement="top" title="NEARING DUE DATE">
+                              <input type="radio" name="options" id="ORANGE" value="ORANGE" autocomplete="off">&nbsp &nbsp &nbsp
+                            </label>
+                            <label class="btn" style="background-color: red" data-toggle="tooltip" data-placement="right" title="OVERDUE">
+                              <input type="radio" name="options" id="RED" value="RED" autocomplete="off">&nbsp &nbsp &nbsp
+                            </label>
+                          </div>
+                          <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"></div>
+                        </div>
+                        <!-- END OF MINI ROW -->
+                      </div>
+
+
+                    </div>
+                    <!-- END OF MAIN ROW -->
+
+                    <!--END OF ROW-->
+                  </form>
+
+                </div>
+                <!--WRAPPING THE FORM AROUND1 WITH CARD - BODY-->
+              </div>
+              <!--WRAPPING THE FORM AROUND2 WITH CARD-->
+            </div>
+
+            <div class="col-md-3 col-lg-3 col-xs-12">
+              <div class="sticky-note-header" style="box-shadow: 1px 4px 4px grey;">
+                <strong>LEGEND</strong>
+                <i class="fas fa-thumbtack float-right"></i>
+              </div>
+              <div class="sticky-note-body" style="box-shadow: 1px 4px 4px grey;">
+                <span>
+                  <i class="fas fa-square" style="color: green"></i>&nbsp &nbspIMPLEMENTED</span>
+                <br>
+                <span>
+                  <i class="fas fa-square" style="color: yellow"></i>&nbsp &nbspDUE (IN 20 DAYS)</span>
+                <br>
+                <span>
+                  <i class="fas fa-square" style="color: orange"></i>&nbsp &nbspNEARING DUE DATE</span>
+                <br>
+                <span>
+                  <i class="fas fa-square" style="color: red"></i>&nbsp &nbspOVER DUE</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!--END OF CONTAINER-->
+      </div>
+      <!--END OF CARD BODY-->
+    </div>
+    <!--END OF MAIN CARD-->
+
+
+    <br>
+
+
+    <!--LAYOUT OPTIONS-->
+    <div class="container">
+      <div id="TABLE_CONTAINER" class="hidden"></div>
+      <!-- <table class="table table-hover shadow p-3 mb-5 bg-white rounded" id="TABLE_CONTAINER"></table> -->
+    </div>
+
+    <%- include partials/modalViewEdit.ejs %>
+
+</body>
+<!-- SCRIPT FOOTER -->
+<script src="javascript/search.js"></script>
+<script src="javascript/initiate_search.js"></script>
+<script src="javascript/modalView.js"></script>
+<script src="javascript/modalEdit.js"></script>
+<script src="javascript/dataTab.js"></script>
+<script src="javascript/excel_download.js"></script>
+
+</html>

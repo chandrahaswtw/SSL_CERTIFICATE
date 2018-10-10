@@ -1,3 +1,9 @@
+/* NAV BAR */
+
+.navbar {
+    opacity: 0.93;
+} 
+
 nav li:hover {
     color: azure;
 }

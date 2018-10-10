@@ -1,38 +1,18 @@
-const excelToJson = require('convert-excel-to-json');
+// SEND MAIL
+const sendmail = require('sendmail')({
+  smtpPort: 25,// Default: 25
+  smtpHost: 'ap.replay.ibm.com'// Default: -1 - extra smtp host after resolveMX
+})
 
-const result = excelToJson({
-  sourceFile: './public/excel_files/upload/CERTIFICATE_STATUS_TEMPLATE_1537708306401.xlsx',
-  header: { rows: 1 },
-  columnToKey: {
-    A: 'appId',
-    B: 'appName',
-    C: 'envName',
-    D: 'serverName',
-    E: 'portfolioName',
-    F: 'certName',
-    G: 'expDate',
-    H: 'primaryName',
-    I: 'primaryPhone',
-    J: 'primaryEmail',
-    K: 'secondaryName',
-    L: 'secondaryPhone',
-    M: 'secondaryEmail',
-    N: 'alertToolName',
-    O: 'alertMech'
-  }
+var body = "<h3><strong>CERTIFICATION VALIDATION TOOL</strong></h3><h4>You have successfully changed your <strong>Certificate Validation Tool</strong> password ! </h4><p>Hi,</p> <p>The password for your Certification Validation Tool Account was successfully changed.</p><p> Your new password is -                          </p><p> Click <a href= \"http://www.google.com\">here</a> to Log On !</p><h6>This mail was system generated. Please do not respond.</h6>"
+
+sendmail({
+  from: 'no-reply@in.ibm.com',
+  to: 'cballeda@in.ibm.com',
+  subject: 'PASSWORD RESET',
+  html: body,
+}, function (err, reply) {
+  if (err)
+    return console.log('INTERNAL ERROR');
+  console.log('MAIL SENT');
 });
-//console.log(JSON.stringify(result['CERTIFICATE STATUS']));
-
-var fs = require("fs");
-
-// fs.unlink('./JournalDEV.txt', (err) => {
-//   if (err) throw err;
-//   console.log('successfully deleted /tmp/hello');
-// });
-
-var writeStream = fs.createWriteStream("./JournalDEV.json");
-writeStream.write(JSON.stringify(result['CERTIFICATE STATUS']));
-writeStream.end();
-
-
-//console.log(result);

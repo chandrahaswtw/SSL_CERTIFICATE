@@ -1,5 +1,5 @@
 <table class="table table-hover shadow p-3 mb-5 bg-white rounded" id="HOME_TABLE">
-    <caption>LIST OF APPLICATIONS & SERVERS</caption>
+    <caption>LIST REFLECTING THE SERVERS AND CERTIFICATE INFO</caption>
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
@@ -7,6 +7,7 @@
             <th scope="col">APP NAME</th>
             <th scope="col" data-toggle="tooltip" data-placement="top" title="CLICK HERE TO SORT RESULTS BY SERVER NAME">SERVER NAME</th>
             <th scope="col" data-toggle="tooltip" data-placement="top" title="CLICK HERE TO SORT RESULTS BY EXPIRY DATE">EXPIRY DATE</th>
+            <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
@@ -29,9 +30,16 @@
             </button>
 
         </td>
+
         <td scope="col">
             <button type="button" name="modalEditBtn" style="padding: 0;border: none;background: none" id="{{this._id}}" _rev="{{this._rev}}">
-                <i class="fas fa-edit " data-toggle="tooltip " data-placement="top " title="CLICK TO EDIT "></i>
+                <i class="fas fa-edit " data-toggle="tooltip" data-placement="top" title="CLICK TO EDIT"></i>
+            </button>
+        </td>
+
+        <td scope="col">
+            <button type="button" name="mailTrig" style="padding: 0;border: none;background: none" id="{{this._id}}" _rev="{{this._rev}}">
+                <i class="fas fa-envelope" data-toggle="tooltip" data-placement="top" title="CLICK TO TRIGGER MAIL"></i>
             </button>
         </td>
     </tr>

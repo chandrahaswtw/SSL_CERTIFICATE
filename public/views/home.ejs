@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>CVT | HOME</title>
+
+    <%- include partials/script.ejs %>
+        <!-- CUSTOM CSS -->
+        <link rel="stylesheet" href="stylesheets/home.css" />
+
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top shadow">
+        <!-- <div class="container"> -->
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active nohover">
+                    <a class="navbar-brand" href="/">
+                        <h5 class="text-white">
+                            <i class="fab fa-expeditedssl"></i>
+                            &nbsp CVT</h4>
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/">
+                        HOME
+                        <span class="sr-only">(current)</span>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        ADD
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/add">MANUAL</a>
+                        <a class="dropdown-item" href="/bulk_upload">BULK UPLOAD</a>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/search">
+                        SEARCH
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/download">
+                        <i class="fas fa-download"></i>
+                    </a>
+                </li>
+
+                <li class="nav-item dropdown" id="ACT_DD">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="fas fa-user-circle"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/changePassword">CHANGE PASSWORD</a>
+                        <a class="dropdown-item" href="/manageUsers">MANAGE USERS</a>
+                        <a class="dropdown-item" href="/logout">LOG OUT</a>
+                </li>
+
+            </ul>
+            </div>
+            </div>
+            <!-- </div> -->
+    </nav>
+
+
+    <div class="jumbotron">
+        <div class="container">
+            <br>
+            <br>
+            <br>
+
+            <p class="lead my-0">WELCOME TO</p>
+            <h1 class="display-4 my-0" id="CVT">CERTIFICATE VALIDATION
+                <br> TOOL</h1>
+
+            <span class="bg-base-color d-block mt-4 sep-line-extra-thick-long" id="spanLine"></span>
+        </div>
+    </div>
+
+
+
+    <br>
+    <br>
+
+    <!-- ********************************** -->
+    <!-- LAYOUT OPTIONS -->
+
+    <div class="bg-light mt-0" style="margin-bottom: 0;">
+        <br>
+        <br>
+        <div class="container" id="dynamo">
+            <div id="TABLE_CONTAINER"></div>
+        </div>
+        <br>
+        <br>
+        <!-- <hr class="featurette-divider text-dark container"> -->
+    </div>
+
+    <!-- ********************************** -->
+    <!-- CHARTS SECTION -->
+
+
+    <section id="CHART_SECTION">
+        <div class="mx-5">
+            <div class="row">
+                <div class="col-md-6 my-5 col-sm-12">
+                    <div class="card pb-0" id="CARD_TABLE">
+                        <div class="card-body">
+
+                            <h1 class="display-4 my-0" style="font-size: 40px">CURRENT RECORD COUNT</h1>
+                            <span class="bg-base-color d-block mt-4 sep-line-extra-thick-long"></span>
+                            <br>
+                            <!-- TABLE SPACE -->
+                            <table class="table table-hover p-3 rounded m-0 shadow" id="TABLEZONE" style="background: #fff">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th scope="col">CATEGORY</th>
+                                        <th scope="col">COUNT</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>IMPLEMENTED</td>
+                                        <td>
+                                            <span id="SUCCESS_COUNT"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>DUE (IN 20 DAYS)</td>
+                                        <td>
+                                            <span id="WARNING_COUNT"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>NEARING DUE DATE</td>
+                                        <td>
+                                            <span id="PRE_DANGER_COUNT"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>OVERDUE</td>
+                                        <td>
+                                            <span id="DANGER_COUNT"></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <strong>TOTAL</strong>
+                                        </td>
+                                        <td>
+                                            <strong>
+                                                <span id="TOTAL_COUNT"></span>
+                                            </strong>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 my-5 col-md-6">
+                    <div class="card" id="CARD_CHART">
+                        <div class="card-body">
+                            <div id="main" class="img-fluid" style="width:633px; height:400px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <br>
+    <br>
+
+    <%- include partials/modalViewEdit.ejs %>
+        <%- include partials/footer_all.ejs %>
+
+
+</body>
+
+<!-- FOOTER SCRIPT -->
+<script src="javascript/home.js"></script>
+<script src="javascript/initiate_home.js"></script>
+<script src="javascript/modalView.js"></script>
+<script src="javascript/modalEdit.js"></script>
+<script src="javascript/dataTab.js"></script>
+<script src="javascript/excel_download.js"></script>
+
+</html>

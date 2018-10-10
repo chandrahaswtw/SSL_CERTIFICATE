@@ -1,0 +1,35 @@
+.overlay-background
+{
+  /* background-image: linear-gradient(to left, #00dbde, #505cfd); */
+  background-image: url(./../images/CVT_LOGIND.jpg);
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.heading {
+  font-weight: bold;
+  color: white;
+}
+
+/* SPAN ELEMENT */
+.bg-base-color {
+  background-color: #DF292D !important;
+}
+
+.sep-line-extra-thick-long {
+  height: 7px;
+  width: 70px;
+}
+
+/* LOGIN DIV */
+#CARD_LOGIN
+{
+background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+

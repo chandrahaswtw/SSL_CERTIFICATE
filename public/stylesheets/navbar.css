@@ -1,0 +1,20 @@
+/* NAV BAR */
+.navbar {
+  opacity: 0.93;
+} 
+
+nav li:hover {
+  color: white;
+  border-bottom: 1px red solid;
+}
+
+.nohover:hover {
+  border:none;
+}
+
+nav li
+{
+  margin-right: 30px;
+}
+
+

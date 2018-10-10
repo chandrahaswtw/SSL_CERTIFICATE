@@ -3,6 +3,10 @@ var form_elements;
 var unsaved = false;
 $(document).ready(function () {
 
+  toastr.options = {
+    "positionClass": "toast-top-left",
+  }
+
   $(function () {
     $('#expDate').datepicker({
       language: 'en',

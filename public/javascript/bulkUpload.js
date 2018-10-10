@@ -1,6 +1,10 @@
 $(document).ready(function () {
   $('#loading').hide();
 
+  toastr.options = {
+    "positionClass": "toast-top-left",
+  }
+
   $('#customFile').on('change', function () {
     toastr.clear();
     history.replaceState({}, document.title, window.location.href.split('#')[0]);
@@ -24,16 +28,18 @@ $(document).ready(function () {
   if (window.location.hash) {
     var x = (window.location.hash).split('');
     x.shift();
-    $.get('/json_text', { file: x.join('') }).done(function (ALLRECORDS) {
+    console.log(decodeURIComponent(x.join('')));
+    $.get('/json_text', { file: decodeURIComponent(x.join('')) }).done(function (ALLRECORDS) {
       console.log(ALLRECORDS.data);
       $('#TEXT_AREA').val(JSON.stringify(ALLRECORDS.data, null, 4));
+
     })
   }
 
   $('#BTN_SYNC').on('click', function (e) {
     $('#loading').show();
     e.preventDefault();
-    if (!window.location.hash) {
+    if (!window.location.hash || (($('#TEXT_AREA').val())).length == 0) {
       toastr.clear();
       $('#loading').hide();
       return toastr.error('No file was uploaded', 'DATA SYNC FAILED')
@@ -52,8 +58,5 @@ $(document).ready(function () {
       }
     })
   })
-
-
-
 })
 

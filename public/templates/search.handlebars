@@ -10,6 +10,7 @@
             <th scope="col"></th>
             <th scope="col"></th>
             <th scope="col"></th>
+            <th scope="col"></th>
         </tr>
     </thead>
 
@@ -32,6 +33,12 @@
         <td scope="col">
             <button type="button" name="modalEditBtn" style="padding: 0;border: none;background: none" id="{{this._id}}">
                 <i class="fas fa-edit" data-toggle="tooltip" data-placement="top" title="CLICK TO EDIT"></i>
+            </button>
+        </td>
+
+        <td scope="col">
+            <button type="button" name="mailTrig" style="padding: 0;border: none;background: none" id="{{this._id}}" _rev="{{this._rev}}">
+                <i class="fas fa-envelope" data-toggle="tooltip" data-placement="top" title="CLICK TO TRIGGER MAIL"></i>
             </button>
         </td>
     </tr>

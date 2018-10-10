@@ -68,3 +68,7 @@ div.hidden
 select::-ms-expand {
     -webkit-appearance: none;
 }
+
+body {
+    overflow-y: scroll;
+ }

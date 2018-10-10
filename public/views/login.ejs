@@ -1,0 +1,136 @@
+<!doctype <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>CVT | LOGIN</title>
+
+
+  <%- include partials/script.ejs %>
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="stylesheets/login.css">
+
+
+</head>
+
+<body>
+
+
+
+  <div class="overlay-background">
+    <div class="container">
+      <% if (typeof(FLASH) != 'undefined') {%>
+        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert" style="position: relative;">
+          <strong>Hey
+            <%= FLASH%>!</strong> You've successfully logged out of CVT.
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <%}%>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6" style="margin-top: 20%">
+          <h1 class="heading">
+            CERTIFICATE VALIDATION TOOL
+
+            <span class="bg-base-color d-block mt-4 sep-line-extra-thick-long"></span>
+          </h1>
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-5" style="margin-top: 15%">
+          <div class="card" id="CARD_LOGIN">
+            <div class="card-header text-white">
+              <section class="float-left">
+                <span style="font-size: 25px">Login to the site
+                </span>
+                <br> Enter your username and password to log on :
+              </section>
+              <i class="fas fa-user-lock float-right fa-2x mt-3"></i>
+            </div>
+            <div class="card-body">
+              <form id="loginFrm">
+                <div class="form-group">
+                  <input type="text" placeholder="Username..." class="form-control mb-3" name="username" id="UID" autocorrect="off" autocapitalize="off"
+                    spellcheck="false">
+                  <input type="password" placeholder="Password..." class="form-control mb-3" name="password" id="PWD">
+                  <button type="submit" class="btn btn-danger btn-block" id="SIGNIN_BTN">Sign in</button>
+                </div>
+              </form>
+              <p class="text-center">
+                <span class="text-white">or</span>
+                <a class="text-info" href="#" data-toggle="modal" data-target="#modalRegister">Forgot Password</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <%- include partials/footer_login.ejs %>
+  </div>
+
+
+  <!-- MODAL PASSWORD FORGOT EMAIL -->
+  <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Forgot password</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+
+          <div class="input-group">
+            <input type="email" class="form-control" id="primaryEmail" name="primaryEmail" autocomplete="off" placeholder="Email" autocorrect="off"
+              autocapitalize="off" spellcheck="false">
+            <div class="input-group-prepend bg-white">
+              <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+                <i class="far fa-envelope"></i>
+              </span>
+            </div>
+          </div>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="btnSendMail">Reset password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIRST LOG-IN PASSWORD RESET -->
+  <div class="modal fade" id="modalReset" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Password Reset (One time process)</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="FRM">
+            <input type="password" name="NEW" class="form-control mb-3" placeholder="Enter new password" id="NEW">
+            <input type="password" name="RENEW" class="form-control mb-3" placeholder="Re-type new password" id="RENEW">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" id="BTNRESET" disabled>Update password</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+</body>
+<script src="javascript/login.js"></script>
+
+</html>

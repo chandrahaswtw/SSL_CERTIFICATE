@@ -1,13 +1,13 @@
 
 $(document).ready(function () {
 
+
   //DATE PICKER
   $('#SSL_CALEN_ID').datepicker({
     language: 'en',
     autoClose: true,
     dateFormat: 'mm/dd/yyyy'
   })
-
 
 
   //TOOL TIP
@@ -76,6 +76,9 @@ $(document).ready(function () {
 
   //BASIC SEARCH FORM SUBMIT
   $('#SEARCH_FORM').on('submit', function (e) {
+    toastr.options = {
+      "positionClass": "toast-top-left",
+    }
     e.preventDefault();
     formElements = $('#SEARCH_FORM').serializeArray();
     if (!formElements[0].value) {

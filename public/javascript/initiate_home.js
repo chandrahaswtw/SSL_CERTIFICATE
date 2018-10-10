@@ -1,5 +1,7 @@
 function initiate_home(callback) {
   $.get('/home').done(function (data) {
+
+
     //*******TABLE SECTION BEGIN *******//
     $('#SUCCESS_COUNT').text(`${data.SUCCESS_COUNT}`);
     $('#WARNING_COUNT').text(`${data.WARNING_COUNT}`);
@@ -16,7 +18,7 @@ function initiate_home(callback) {
     var option = {
       title: {
         text: 'CERTIFICATE VALIDATION STATUS',
-        subtext: 'CHART DISPLAYING THE CERTIFICATE STATUS',
+        // subtext: 'CHART DISPLAYING THE CERTIFICATE STATUS',
         x: 'center'
       },
       tooltip: {
@@ -56,9 +58,7 @@ function initiate_home(callback) {
 
     // use configuration item and data specified to show chart
     myChart.setOption(option);
-    $('#TABLEZONE').show();
     $('#main').show();
-    $('#CHART_TEMP').hide();
 
     //*******CHART SECTION END *******//
   });

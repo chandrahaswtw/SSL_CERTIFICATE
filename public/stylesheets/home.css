@@ -6,14 +6,6 @@ table {
     counter-increment: tableCount; 
 }
 
-nav li:hover {
-    color: azure;
-}
-
-nav li
-{
-    margin-right: 30px;
-}
 
 #modalViewTarget input, #modalViewTarget textarea:hover {
     cursor:not-allowed
@@ -24,5 +16,60 @@ nav li
  }
 
  .datepicker { z-index:99999 !important; }
+
+ .jumbotron {
+min-height: 450px;
+background-image: url(./../images/CVT_HOME.png);
+background-position:right;
+background-attachment: fixed;
+overflow: hidden;
+/* color: white; */
+-webkit-background-size: cover;
+-moz-background-size: cover;
+background-size: cover;
+-o-background-size: cover;
+/* height: 100%; */
+margin-bottom: -48px !important;
+}
+
+#CHART_SECTION {
+    min-height: 550px;
+    background-image: url(./../images/CVT_SECTION.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center top;
+    overflow: hidden; 
+}
+
+
+.bg-base-color {
+    background-color: #DF292D !important;
+}
+
+.sep-line-extra-thick-long {
+    height: 7px;
+    width: 70px;
+}
+
+table caption{
+    caption-side: top;
+}
+
+#CARD_TABLE , #CARD_CHART
+{
+    background: rgba(255,255,255,0.93);
+    min-height: 450px;
+    border-bottom: solid black 3px;
+}
+
+
+#TABLEZONE
+{
+   border-bottom: #DF292D solid 1px;
+
+}
+
+
+
 
 
