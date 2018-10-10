@@ -62,7 +62,7 @@ function sendMail(req, res, email, passwordNew) {
 
   sendmail({
     from: 'no-reply@in.ibm.com',
-    to: req.user.username,
+    to: email,
     subject: 'Certification validation tool - Access',
     html: body,
   }, function (err, reply) {
