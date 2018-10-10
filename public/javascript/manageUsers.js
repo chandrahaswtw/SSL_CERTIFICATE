@@ -5,19 +5,19 @@ $(document).ready(function () {
   }
 
   // HANDLEBARS
-  $('#TABLE_CONTAINER').html(Handlebars.templates['userData']());
-
-  $.post('/getUserData').done(function (data) {
-    console.log(data);
-  })
-
-  $('#userTable').DataTable({
-    columnDefs: [{
-      targets: [0, 2],
-      orderable: false
-    }],
-    "order": [[1, "asc"]]
-  });
+  user_handlebars();
+  function user_handlebars() {
+    $.post('/getUserData').done(function (data) {
+      $('#TABLE_CONTAINER').html(Handlebars.templates['userData'](data));
+      $('#userTable').DataTable({
+        columnDefs: [{
+          targets: [0, 2],
+          orderable: false
+        }],
+        "order": [[1, "asc"]]
+      });
+    })
+  }
 
 
   // ADD USERS STUFF BUTTON CLICK EVENT
@@ -44,10 +44,10 @@ $(document).ready(function () {
 
       else if (data.STATUS == "SUCCESS") {
         $('#primaryEmail').val("");
+        user_handlebars();
         $('#modalAdd').modal('hide');
         return toastr.success("Credentails are sent to the user's Email ID", 'NEW USER ADDED');
       }
-
     })
   })
 

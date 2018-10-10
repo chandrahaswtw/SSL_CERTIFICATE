@@ -8,26 +8,14 @@
     </tr>
   </thead>
   <tbody>
+    {{#each data}}
     <tr>
       <th scope="row">1</th>
-      <td>cballeda@in.ibm.com</td>
+      <td>{{this.username}}</td>
       <td>
         <i class="fas fa-trash-alt"></i>
       </td>
     </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td>Jacob</td>
-      <td>
-        <i class="fas fa-trash-alt"></i>
-      </td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Larry</td>
-      <td>
-        <i class="fas fa-trash-alt"></i>
-      </td>
-    </tr>
+    {{/each}}
   </tbody>
 </table>

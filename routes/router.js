@@ -25,6 +25,7 @@ const { syncData } = require('./excel_ops/syncData');
 
 // manageUsers
 const { manageUsers } = require('./manageUsers/addRemove');
+const { getUserData } = require('./manageUsers/getUserData');
 
 
 //express middleware
@@ -151,9 +152,13 @@ router.post('/addUser', (req, res) => {
   manageUsers(req, res);
 })
 
+router.post('/getUserData', (req, res) => {
+  getUserData(res);
+})
+
+
 // REMOVE USERS
 router.post('/removeUser', (req, res) => {
-
 })
 
 //********************************************************************//
