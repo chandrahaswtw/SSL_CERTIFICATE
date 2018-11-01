@@ -32,9 +32,9 @@
     <input type="text" class="form-control" id="portfolioName" name="portfolioName" autocomplete="off" disabled value="{{ALL_RECORDS.portfolioName}}">
   </div>
 
-  {{!-- ROW 4 --}}
+  {{!-- ROW 4.1 --}}
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-sm-12">
       <label for="certName">CERTIFICATE NAME</label>
       <div class="input-group">
         <input type="text" class="form-control" id="certName" name="certName" autocomplete="off" disabled value="{{ALL_RECORDS.certName}}">
@@ -45,8 +45,11 @@
         </div>
       </div>
     </div>
+  </div>
 
-    <div class="form-group col-md-6">
+  {{!-- ROW 4.2 --}}
+  <div class="form-row">
+    <div class="form-group col-sm-12">
       <label for="expDate">EXPIRY DATE (MM/DD/YYYY)</label>
       <div class="input-group">
         <input type="text" class="form-control" id="expDate" name="expDate" autocomplete="off" disabled value="{{ALL_RECORDS.expDate}}">
@@ -154,9 +157,8 @@
   {{!-- ROW 9 --}}
   <div class="form-group">
     <label for="exampleFormControlTextarea1">REMARKS</label>
-    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" disabled> 
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" disabled>{{ALL_RECORDS.remarks}}
     </textarea>
   </div>
-
 
 </form>

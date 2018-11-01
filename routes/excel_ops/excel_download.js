@@ -28,7 +28,8 @@ function excel_config() {
     { header: 'SECONDARY PHONE', key: 'secondaryPhone', width: 20 },
     { header: 'SECONDARY EMAIL', key: 'secondaryEmail', width: 32 },
     { header: 'ALERT TOOL NAME', key: 'alertToolName', width: 20 },
-    { header: 'ALERT MECHANISM', key: 'alertMech', width: 20 }
+    { header: 'ALERT MECHANISM', key: 'alertMech', width: 20 },
+    { header: 'REMARKS', key: 'remarks', width: 40 }
   ];
 
   var dobCol = ws.getRow(1);

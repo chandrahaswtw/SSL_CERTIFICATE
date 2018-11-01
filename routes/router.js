@@ -17,6 +17,7 @@ const { modalUpdate } = require('./record_ops/modalUpdate');
 //login_ops
 const { changePassword, changePasswordLogin } = require('./login_ops/changePassword');
 const { forgotPassword } = require('./login_ops/forgotPassword');
+const { checkAuth } = require('./login_ops/checkAuth');
 
 // excel_ops
 const { fill_Excel } = require('./excel_ops/excel_download');
@@ -24,8 +25,11 @@ const { disc_ops, json_text } = require('./excel_ops/excel_upload');
 const { syncData } = require('./excel_ops/syncData');
 
 // manageUsers
-const { manageUsers } = require('./manageUsers/addRemove');
+const { manageUsers, removeUser } = require('./manageUsers/addRemove');
 const { getUserData } = require('./manageUsers/getUserData');
+
+// STATUS MAIL
+const { indMailTrig } = require('./statusMail/indMailTrig');
 
 
 //express middleware
@@ -52,7 +56,7 @@ router.get('/add', checkAuth, (req, res) => {
   res.render('add');
 })
 
-//ADD PAGE BULK
+//BULK UPLOAD PAGE
 router.get('/bulk_upload', checkAuth, (req, res) => {
   res.render('bulkUpload');
 })
@@ -63,10 +67,20 @@ router.get('/search', checkAuth, (req, res) => {
 })
 
 
-//EXCEL_DOWNLOAD
+//EXCEL_DOWNLOAD (BULK)
 router.get('/download', checkAuth, function (req, res) {
   file = path.join(excel_files, 'download/CERTIFICATE STATUS.xlsx')
   fill_Excel(res, file);
+});
+
+//EXCEL_DOWNLOAD (TEMPLATE)
+router.get('/templateDownload', checkAuth, function (req, res) {
+  file = path.join(excel_files, 'template/BULKUPLOAD_TEMPLATE.xlsx');
+  res.download(file, (err) => {
+    if (!err) {
+      console.log('TEMPLATE DOWNLOADED');
+    }
+  });
 });
 
 // CHANGE PASSWORD
@@ -74,9 +88,9 @@ router.get('/changePassword', checkAuth, (req, res) => {
   res.render('changePassword', { email: req.user.username, id: req.user.id, rev: req.user.rev });
 })
 
-//MAMANGE USERS
+//MANANGE USERS
 router.get('/manageUsers', checkAuth, (req, res) => {
-  res.render('manageUsers');
+  res.render('manageUsers', { email: req.user.username });
 })
 
 //********************************************************************//
@@ -159,24 +173,26 @@ router.post('/getUserData', (req, res) => {
 
 // REMOVE USERS
 router.post('/removeUser', (req, res) => {
+  removeUser(req, res);
 })
 
 //********************************************************************//
 
+//*******************OTHER ROUTES - SEND MAIL STATUS******************//
+// INDIVIDUAL MAIL
+router.post('/indMailTrig', (req, res) => {
+  indMailTrig(req, res);
+})
 
 
 
 
 
 
+
+
+//********************************************************************//
 //****** ROUTE MIDDLEWARE *********/
-
-function checkAuth(req, res, next) {
-  if (req.isAuthenticated())
-    return next();
-  else
-    res.redirect('/login');
-}
 
 module.exports = router;
 

@@ -19,58 +19,67 @@
 
 
   <div class="overlay-background">
-    <div class="container">
-      <% if (typeof(FLASH) != 'undefined') {%>
-        <div class="alert alert-success alert-dismissible fade show" role="alert" id="alert" style="position: relative;">
-          <strong>Hey
-            <%= FLASH%>!</strong> You've successfully logged out of CVT.
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <%}%>
-    </div>
 
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6" style="margin-top: 20%">
-          <h1 class="heading">
-            CERTIFICATE VALIDATION TOOL
+    <% if (typeof(FLASH) != 'undefined') {%>
+      <div class="container mt-3">
+        <div class="alert alert-secondary  fade show" role="alert" id="alert" style="position: relative;">
+          <strong style="color: green">
+            <i class="fas fa-check"></i>
+          </strong> &nbsp; You've successfully logged out of CVT.
 
-            <span class="bg-base-color d-block mt-4 sep-line-extra-thick-long"></span>
-          </h1>
         </div>
-        <div class="col-md-1"></div>
-        <div class="col-md-5" style="margin-top: 15%">
-          <div class="card" id="CARD_LOGIN">
-            <div class="card-header text-white">
-              <section class="float-left">
-                <span style="font-size: 25px">Login to the site
-                </span>
-                <br> Enter your username and password to log on :
-              </section>
-              <i class="fas fa-user-lock float-right fa-2x mt-3"></i>
-            </div>
-            <div class="card-body">
-              <form id="loginFrm">
-                <div class="form-group">
-                  <input type="text" placeholder="Username..." class="form-control mb-3" name="username" id="UID" autocorrect="off" autocapitalize="off"
-                    spellcheck="false">
-                  <input type="password" placeholder="Password..." class="form-control mb-3" name="password" id="PWD">
-                  <button type="submit" class="btn btn-danger btn-block" id="SIGNIN_BTN">Sign in</button>
-                </div>
-              </form>
-              <p class="text-center">
-                <span class="text-white">or</span>
-                <a class="text-info" href="#" data-toggle="modal" data-target="#modalRegister">Forgot Password</a>
-              </p>
-            </div>
+      </div>
+      <%} else {%>
+        <div class="container invisible mt-3">
+          <div class="alert alert-secondary  fade show" role="alert" id="alert" style="position: relative;">
+            <strong>
+              <i class="fas fa-check"></i>
+            </strong> You've successfully logged out of CVT.
+
           </div>
         </div>
+        <%}%>
 
-      </div>
-    </div>
-    <%- include partials/footer_login.ejs %>
+          <div class="container">
+            <div class="row">
+              <div class="col-md-6" style="margin-top: 14%">
+                <h1 class="heading">
+                  CERTIFICATE VALIDATION TOOL
+
+                  <span class="bg-base-color d-block mt-4 sep-line-extra-thick-long"></span>
+                </h1>
+              </div>
+              <div class="col-md-1"></div>
+              <div class="col-md-5" style="margin-top: 9%">
+                <div class="card" id="CARD_LOGIN">
+                  <div class="card-header text-white">
+                    <section class="float-left">
+                      <span style="font-size: 25px">Login to the site
+                      </span>
+                      <br> Enter your username and password to log on :
+                    </section>
+                    <i class="fas fa-user-lock float-right fa-2x mt-3"></i>
+                  </div>
+                  <div class="card-body">
+                    <form id="loginFrm">
+                      <div class="form-group">
+                        <input type="text" placeholder="Username..." class="form-control mb-3" name="username" id="UID" autocorrect="off" autocapitalize="off"
+                          spellcheck="false">
+                        <input type="password" placeholder="Password..." class="form-control mb-3" name="password" id="PWD">
+                        <button type="submit" class="btn btn-danger btn-block" id="SIGNIN_BTN">Sign in</button>
+                      </div>
+                    </form>
+                    <p class="text-center">
+                      <span class="text-white">or</span>
+                      <a class="text-info" href="#" data-toggle="modal" data-target="#modalRegister">Forgot Password</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <%- include partials/footer_login.ejs %>
   </div>
 
 

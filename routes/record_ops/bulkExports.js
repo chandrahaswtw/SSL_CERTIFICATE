@@ -6,6 +6,6 @@ function unify(data) {
     return unified_data;
 }
 
-var url = `https://${process.env.account}.cloudant.com/dummy/_all_docs?include_docs=true`;
+var url = `https://${process.env.account}.cloudant.com/cvt_records/_all_docs?include_docs=true`;
 
-module.exports = {unify,url};
+module.exports = { unify, url };

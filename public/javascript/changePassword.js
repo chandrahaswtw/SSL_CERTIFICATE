@@ -4,19 +4,30 @@ $(document).ready(function () {
     "positionClass": "toast-top-left",
   }
 
+  // BUTTON DISABLE AND ENABLE
+  $('#NEW').keyup(function () {
+
+    if ($('#NEW').val() == $('#RE-NEW').val() && $('#NEW').val().length > 0) {
+      $("#CHANGEPWD").prop('disabled', false)//use prop()
+    } else {
+      $("#CHANGEPWD").prop('disabled', true)//use prop()
+    }
+  });
+
+  $("#RE-NEW").keyup(function () {
+
+    if ($('#NEW').val() == $('#RE-NEW').val() && $('#NEW').val().length > 0) {
+      $("#CHANGEPWD").prop('disabled', false)//use prop()
+    } else {
+      $("#CHANGEPWD").prop('disabled', true)//use prop()
+    }
+  });
+
+
+
   $('#CHANGEPWD').on('click', function (e) {
+
     e.preventDefault();
-
-    if ($('#CURRENT').val() == "" || $('#NEW').val() == "" || $('#RE-NEW').val() == "") {
-      toastr.clear();
-      return toastr.error('Password field(s) cannot be left empty', 'ERROR');
-    }
-
-    if ($('#NEW').val() != $('#RE-NEW').val()) {
-      toastr.clear();
-      return toastr.error('Your new password does not match confirmation.', 'ERROR');
-    }
-
     $('#CHANGEPWD').attr('disabled', true).text('UPDATING...');
     $.post('/changePWD', $('#FRM').serializeArray()).done(function (data) {
 
@@ -28,7 +39,7 @@ $(document).ready(function () {
       else {
         toastr.clear();
         $("#FRM")[0].reset();
-        $('#CHANGEPWD').removeAttr('disabled').text('CHANGE PASSWORD');
+        $('#CHANGEPWD').text('CHANGE PASSWORD');
         return toastr.success('Password updated successfully', 'DONE');
       }
     })

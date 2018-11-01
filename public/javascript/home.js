@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 
     toastr.options = {
@@ -21,5 +21,7 @@ $(document).ready(function() {
         dataTab('HOME_TABLE');
         toastr.clear();
     });
+
+
 
 });

@@ -1,10 +1,16 @@
 $(document).ready(function () {
 
+  $('#loading').removeClass('hidden');
+
   toastr.options = {
     "positionClass": "toast-top-left",
   }
 
-  // HANDLEBARS
+  $('body').tooltip({
+    selector: '[data-toggle="tooltip"]' // tooltip objects will be delegated to the specified targets
+  });
+
+  // HANDLEBARS TEMPLATE
   user_handlebars();
   function user_handlebars() {
     $.post('/getUserData').done(function (data) {
@@ -16,6 +22,7 @@ $(document).ready(function () {
         }],
         "order": [[1, "asc"]]
       });
+      $('#loading').addClass('hidden');
     })
   }
 
@@ -50,5 +57,40 @@ $(document).ready(function () {
       }
     })
   })
+
+  // REMOVE USERS FONT AWESOME CLICK
+  $("body").on("click", "[name='modalRemove']", function (e) {
+
+    e.stopPropagation();
+    e.preventDefault();
+    if ($('#titleUser').attr('username') == $(this).attr('username'))
+      return $('#modalSelfDestruct').modal('show');
+    $('#btnDelete').attr('idtemp', $(this).attr('id'));
+    $('#btnDelete').attr('revtemp', $(this).attr('_rev'));
+    $('#modalDelete').modal('show');
+  })
+
+  // REMOVE USERS BUTTON CLICK
+  $('#btnDelete').on('click', function (e) {
+    e.preventDefault();
+    $('#btnDelete').attr('disabled', true).text('Removing....');
+    $.post('/removeUser', { id: $(this).attr('idtemp'), _rev: $(this).attr('revtemp') }, function (data) {
+
+      $('#btnDelete').removeAttr('disabled').text('Remove user');
+      if ((data.STATUS) == "ERROR") {
+        toastr.error('Try again !!', 'INTERNAL ERROR');
+      }
+      else {
+        $('#modalDelete').modal('hide');
+        user_handlebars();
+        toastr.success('User removed', 'DONE');
+      }
+
+    })
+
+  })
+
+
+
 
 })

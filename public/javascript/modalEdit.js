@@ -6,7 +6,7 @@ $(document).ready(function () {
     "hideDuration": "1000",
     "timeOut": "5000",
     "extendedTimeOut": "1000",
-    positionClass: 'toast-top-right'
+    positionClass: 'toast-top-left'
   };
 
   //HANDLE BARS REGISTER HELPER
@@ -68,9 +68,14 @@ $(document).ready(function () {
       }
       else {
         $('#modalSave').attr('_rev', data._rev);
-        $('#modalSave').removeAttr('disabled').text('Save changes');
+        //$('#modalSave').removeAttr('disabled').text('Save changes');
         try {
-          initiate_home(function cb() { dataTab('HOME_TABLE'); toastr.clear(); toastr.success('RECORD UPDATED'); });
+          initiate_home(function cb() {
+            dataTab('HOME_TABLE'); toastr.clear();
+            $('#modalSave').removeAttr('disabled').text('Save changes');
+            $('#MODAL_EDIT').modal('hide');
+            toastr.success('RECORD UPDATED');
+          });
         }
         catch (e) { dummy(e); }
         try {
@@ -78,13 +83,18 @@ $(document).ready(function () {
             form_search(function cb(count) {
               dataTab('SEARCH_TABLE');
               toastr.clear();
+              $('#modalSave').removeAttr('disabled').text('Save changes');
+              $('#MODAL_EDIT').modal('hide');
               toastr.success('RECORD UPDATED');
             });
           else
             radio_search(function cb(count) {
               dataTab('SEARCH_TABLE');
               toastr.clear();
+              $('#modalSave').removeAttr('disabled').text('Save changes');
+              $('#MODAL_EDIT').modal('hide');
               toastr.success('RECORD UPDATED');
+
             });
         }
         catch (e) { dummy(e); }
@@ -92,10 +102,6 @@ $(document).ready(function () {
     });
 
     function dummy(e) { }
-  })
-
-  $('#MODAL_EDIT').on('hidden.bs.modal', function () {
-    toastr.remove();
   })
 
 }) // END OF DOCUMENT READY

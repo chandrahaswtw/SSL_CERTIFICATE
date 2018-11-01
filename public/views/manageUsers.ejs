@@ -18,184 +18,185 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top shadow">
-    <!-- <div class="container"> -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <%- include partials/loader.ejs %>
 
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active nohover">
-          <a class="navbar-brand" href="/">
-            <h5 class="text-white">
-              <i class="fab fa-expeditedssl"></i>
-              &nbsp CVT</h4>
-          </a>
-        </li>
-      </ul>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark sticky-top shadow">
+      <!-- <div class="container"> -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">
-            HOME
-            <span class="sr-only">(current)</span>
-          </a>
-        </li>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active nohover">
+            <a class="navbar-brand" href="/">
+              <h5 class="text-white">
+                <i class="fab fa-expeditedssl"></i>
+                &nbsp CVT</h4>
+            </a>
+          </li>
+        </ul>
 
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            ADD
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/add">MANUAL</a>
-            <a class="dropdown-item" href="/bulk_upload">BULK UPLOAD</a>
-        </li>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">
+              HOME
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
 
-
-        <li class="nav-item">
-          <a class="nav-link" href="/search">
-            SEARCH
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/download">
-            <i class="fas fa-download"></i>
-          </a>
-        </li>
-
-        <li class="nav-item dropdown active" id="ACT_DD">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false">
-            <i class="fas fa-user-circle"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/changePassword">CHANGE PASSWORD</a>
-            <a class="dropdown-item" href="/manageUsers">MANAGE USERS</a>
-            <a class="dropdown-item" href="/logout">LOG OUT</a>
-        </li>
-
-      </ul>
-      </div>
-      </div>
-      <!-- </div> -->
-  </nav>
-
-  <div class="container text-center mt-5 mb-3">
-    <i class="fas fa-users fa-3x"></i>
-  </div>
-  <div class="container">
-    <div class="text-center" style="font-size: 2rem">Manage Users</div>
-    <hr>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              ADD
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/add">MANUAL</a>
+              <a class="dropdown-item" href="/bulk_upload">BULK UPLOAD</a>
+          </li>
 
 
-    <ul class="list-group ">
-      <li class="list-group-item list-group-item-light text-center mx-auto" style="width: 15rem">
-        <a href="#" href="#" data-toggle="modal" data-target="#modalAdd">
+          <li class="nav-item">
+            <a class="nav-link" href="/search">
+              SEARCH
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/download">
+              <i class="fas fa-download"></i>
+            </a>
+          </li>
+
+          <li class="nav-item dropdown active" id="ACT_DD">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
+              aria-expanded="false">
+              <i class="fas fa-user-circle"></i>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/changePassword">CHANGE PASSWORD</a>
+              <a class="dropdown-item" href="/manageUsers">MANAGE USERS</a>
+              <a class="dropdown-item" href="/logout">LOG OUT</a>
+          </li>
+
+        </ul>
+        </div>
+        </div>
+        <!-- </div> -->
+    </nav>
+
+    <div class="container text-center mt-5 mb-3">
+      <i class="fas fa-users fa-3x"></i>
+    </div>
+    <div class="container">
+      <div class="text-center" style="font-size: 2rem" id="titleUser" username="<%= email%>">Manage Users</div>
+      <hr>
+
+      <div class="mx-auto text-center">
+        <button type="button" class="btn btn-outline-primary btn-lg mx-auto" data-toggle="modal" data-target="#modalAdd">
           <i class="fas fa-plus-circle"></i> &nbsp Add user</a>
-      </li>
-    </ul>
-  </div>
+        </button>
+      </div>
 
-  <br>
-
-  <div class="bg-light mt-0" style="margin-bottom: 0;">
-    <br>
-    <br>
-    <div class="container" id="dynamo">
-      <div id="TABLE_CONTAINER"></div>
     </div>
+
     <br>
-    <br>
-    <!-- <hr class="featurette-divider text-dark container"> -->
-  </div>
+
+    <div class="bg-light mt-0" style="margin-bottom: 0;">
+      <br>
+      <br>
+      <div class="container" id="dynamo">
+        <div id="TABLE_CONTAINER"></div>
+      </div>
+      <br>
+      <br>
+      <!-- <hr class="featurette-divider text-dark container"> -->
+    </div>
 
 
 
 
 
 
-  <!-- MODAL ADD USER -->
-  <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            <i class="fas fa-user-plus"></i>
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <div class="input-group">
-            <input type="email" class="form-control" id="primaryEmail" name="primaryEmail" autocomplete="off" placeholder="Email" autocorrect="off"
-              autocapitalize="off" spellcheck="false">
-            <div class="input-group-prepend bg-white">
-              <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
-                <i class="far fa-envelope"></i>
-              </span>
-            </div>
+    <!-- MODAL ADD USER -->
+    <div class="modal fade" id="modalAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              <i class="fas fa-user-plus"></i>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
+          <div class="modal-body">
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="btnSendMail">Send invite</button>
-        </div>
-      </div>
-    </div>
-  </div>
+            <div class="input-group">
+              <input type="email" class="form-control" id="primaryEmail" name="primaryEmail" autocomplete="off" placeholder="Email" autocorrect="off"
+                autocapitalize="off" spellcheck="false">
+              <div class="input-group-prepend bg-white">
+                <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
+                  <i class="far fa-envelope"></i>
+                </span>
+              </div>
+            </div>
 
-  <!-- MODAL DELETE USER -->
-  <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            <i class="fas fa-trash-alt"></i>
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-
-          <p>This is an irreversible process. Are you sure to remove this user ??</p>
-
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-danger" id="btnDelete">Remove user</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="btnSendMail">Send invite</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!-- SELF DESTRUCT -->
-  <div class="modal fade" id="modalSelfDestruct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLongTitle">
-            <i class="fas fa-trash-alt"></i>
-          </h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
+    <!-- MODAL DELETE USER -->
+    <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              <i class="fas fa-trash-alt"></i>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
-          <p>Oops ! You cannot self-destruct...!!</p>
+            <p>This is an irreversible process. Are you sure to remove this user ??</p>
 
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger" id="btnDelete" idtemp="" revtemp="">Remove user</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <%- include partials/footer_all.ejs %>
+    <!-- SELF DESTRUCT -->
+    <div class="modal fade" id="modalSelfDestruct" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">
+              <i class="fas fa-trash-alt"></i>
+            </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+            <p>Oops ! You can't self-destruct...!!</p>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include partials/footer_all.ejs %>
 
 </body>
 <script src="javascript/manageUsers.js"></script>

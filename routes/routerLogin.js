@@ -2,6 +2,7 @@ var router = require('express').Router();
 const path = require('path');
 var bcrypt = require('bcryptjs');
 const { login } = require('./record_ops/cloudant');
+const { checkAuth } = require('./login_ops/checkAuth');
 
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
@@ -11,7 +12,7 @@ router.get('/login', (req, res) => {
   res.render('login', { FLASH: req.flash('INFO')[0] });
 })
 
-router.get('/logout', (req, res) => {
+router.get('/logout', checkAuth, (req, res) => {
   req.flash('INFO', ((req.user.username).split('@')[0]))
   req.logout();
   //res.clearCookie('connect.sid');

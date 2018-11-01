@@ -37,19 +37,40 @@
     <input type="text" class="form-control" id="portfolioName" name="portfolioName" autocomplete="off" value="{{ALL_RECORDS.portfolioName}}">
   </div>
 
-  {{!-- ROW 4 --}}
+  {{!-- ROW 4.1 --}}
   <div class="form-row">
-    <div class="form-group col-md-6">
+    <div class="form-group col-sm-12">
       <label for="certName">CERTIFICATE NAME</label>
       <select id="certName" name="certName" class="form-control">
         <option selected value="">Choose...</option>
-        <option value="CERT1">CERT1</option>
-        <option value="CERT2">CERT2</option>
-        <option value="CERT3">CERT3</option>
+        <div class="dropdown-divider"></div>
+        <optgroup label="SSL Certificates"></optgroup>
+        <!-- <h6 class="dropdown-header">SSL Certificates</h6> -->
+
+        <option value="Web server authentication certificate">Web server authentication certificate</option>
+
+        <option value="Unified Communications (UC or SAN) certificate">Unified Communications (UC or SAN) certificate</option>
+
+        <option value="Wildcard certificate">Wildcard certificate</option>
+
+        <option value="Extended Validation certificate">Extended Validation certificate</option>
+
+        <option value="Low assurance/domain-validated certificate">Low assurance/domain-validated certificate</option>
+
+        <option value="Code signing certificate">Code signing certificate</option>
+
+        <option value="E-mail certificate">E-mail certificate</option>
+
+        <option value="Root signing certificate">Root signing certificate</option>
+
+        <option value="Shared SSL certificate">Shared SSL certificate</option>
+
       </select>
     </div>
+  </div>
 
-    <div class="form-group col-md-6">
+  <div class="form-row">
+    <div class="form-group col-sm-12">
       <label for="expDate">EXPIRY DATE (MM/DD/YYYY)</label>
       <div class="input-group">
         <input type="text" class="datepicker-here form-control" id="expDate" name="expDate" placeholder="Date" data-language='en'
@@ -158,7 +179,7 @@
   {{!-- ROW 9 --}}
   <div class="form-group">
     <label for="exampleFormControlTextarea1">REMARKS</label>
-    <textarea class="form-control" id="textArea" rows="3"> 
+    <textarea class="form-control" id="textArea" rows="3" name="remarks"> 
     </textarea>
   </div>
 

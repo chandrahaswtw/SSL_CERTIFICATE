@@ -15,10 +15,13 @@ $(document).ready(function () {
     })
   });
 
+  $('#textArea').val('');
+
 
 
   $('#frmadd').on('submit', function (e) {
     e.preventDefault();
+
     $('#loading').removeClass('hidden');
     form_elements = $('#frmadd').serializeArray();
     if (!$("#alertMech").is(':checked')) {
@@ -29,11 +32,15 @@ $(document).ready(function () {
       .done(function (data) {
         $('#loading').addClass('hidden');
         if (data.status == "ERROR") {
-          toastr.error('INTERNAL ERROR');
+          return toastr.error('INTERNAL ERROR');
+        }
+        else if
+        (data.status == "DUPLICATE") {
+          return toastr.error('Data insertion falied', 'DUPLICATE RECORD FOUND');
         }
         else {
           $("#frmadd")[0].reset();
-          toastr.success('RECORD ADDED');
+          toastr.success('Record Added', 'DONE');
           unsaved = false;
         }
       }, 'json');
@@ -46,6 +53,7 @@ $(document).ready(function () {
   })
 
 
+  // FORM BROWSER MESSAGE 
 
   $(":input").change(function () { //trigers change in all input fields including text type
     unsaved = true;

@@ -5,7 +5,7 @@
 
 nav li:hover {
   color: white;
-  border-bottom: 1px red solid;
+  /* border-left: 0.5px red solid; */
 }
 
 .nohover:hover {

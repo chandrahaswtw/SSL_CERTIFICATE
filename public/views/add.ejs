@@ -128,11 +128,32 @@
                                 <label for="certName">CERTIFICATE NAME</label>
                                 <select id="certName" name="certName" class="form-control">
                                     <option selected value="">Choose...</option>
-                                    <option value="CERT1">CERT1</option>
-                                    <option value="CERT2">CERT2</option>
-                                    <option value="CERT3">CERT3</option>
+                                    <div class="dropdown-divider"></div>
+                                    <optgroup label="SSL Certificates"></optgroup>
+                                    <!-- <h6 class="dropdown-header">SSL Certificates</h6> -->
+
+                                    <option value="Web server authentication certificate">Web server authentication certificate</option>
+
+                                    <option value="Unified Communications (UC or SAN) certificate">Unified Communications (UC or SAN) certificate</option>
+
+                                    <option value="Wildcard certificate">Wildcard certificate</option>
+
+                                    <option value="Extended Validation certificate">Extended Validation certificate</option>
+
+                                    <option value="Low assurance/domain-validated certificate">Low assurance/domain-validated certificate</option>
+
+                                    <option value="Code signing certificate">Code signing certificate</option>
+
+                                    <option value="E-mail certificate">E-mail certificate</option>
+
+                                    <option value="Root signing certificate">Root signing certificate</option>
+
+                                    <option value="Shared SSL certificate">Shared SSL certificate</option>
+
                                 </select>
                             </div>
+
+
 
                             <div class="form-group col-md-6">
                                 <label for="expDate">EXPIRY DATE</label>
@@ -179,7 +200,7 @@
                         <div class="form-group">
                             <label for="primaryEmail">PRIMARY EMAIL</label>
                             <div class="input-group">
-                                <input type="email" class="form-control" id="primaryEmail" name="primaryEmail" placeholder="Email" autocomplete="off">
+                                <input type="email" class="form-control" id="primaryEmail" name="primaryEmail" placeholder="Email" autocomplete="off" required>
                                 <div class="input-group-prepend bg-white">
                                     <span class="input-group-text border-left-0 rounded-right bg-light" id="basic-addon1">
                                         <i class="far fa-envelope"></i>
@@ -244,9 +265,16 @@
                             </div>
                         </div>
 
+                        <!-- ROW 10 -->
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">REMARKS</label>
+                            <textarea class="form-control" id="textArea" name="remarks" rows="3"> 
+                            </textarea>
+                        </div>
+
                         <br>
 
-                        <!-- ROW 10 -->
+                        <!-- ROW 11 -->
                         <div class="form-group row">
                             <div class="col-sm-4"></div>
                             <div class="col-sm-2" style="text-align: center">
@@ -260,7 +288,7 @@
                     </form>
 
                     <div class="modal fade" id="CLEAR_MODAL_VIEW" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h5 class="modal-title" id="exampleModalLongTitle">CLEAR FORM</h5>
@@ -289,6 +317,5 @@
 </body>
 <!-- FOOTER SCRIPT -->
 <script src="javascript/add.js"></script>
-<script src="javascript/excel_download.js"></script>
 
 </html>

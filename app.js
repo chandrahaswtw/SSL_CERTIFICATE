@@ -38,5 +38,8 @@ app.use(flash());
 // ROUTES
 app.use('/', require('./routes/router'));
 
+// SCHEDULER
+var j = require('./routes/mailSchedule/mailScheduler');
+
 
 app.listen(port, () => { console.log('APP STARTED') });

@@ -56,14 +56,15 @@ function convertToJSON(newFile_splitted) {
       L: 'secondaryPhone',
       M: 'secondaryEmail',
       N: 'alertToolName',
-      O: 'alertMech'
+      O: 'alertMech',
+      P: 'remarks'
     }
   });
 
-  var writeStream = fs.createWriteStream(`./public/excel_files/upload/${newFile_splitted}.json`);
-  writeStream.write(JSON.stringify(result['CERTIFICATE STATUS']));
-  writeStream.end();
 
+  var writeStream = fs.createWriteStream(`./public/excel_files/upload/${newFile_splitted}.json`);
+  writeStream.write(JSON.stringify(result['BULK_UPLOAD']));
+  writeStream.end();
 }
 
 var json_text = (res, file) => {

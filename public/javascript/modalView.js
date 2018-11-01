@@ -23,6 +23,7 @@ $(document).ready(function () {
     e.stopPropagation();
     e.preventDefault();
     $.get('/modal_view', { BTN_ID: this.id }).done(function (data) {
+      console.log(data.ALL_RECORDS[0]);
       $('#modalViewTarget').html(Handlebars.templates['modalView']({ ALL_RECORDS: data.ALL_RECORDS[0] }));
       toastr.clear();
       $('#MODAL_VIEW').modal('show');

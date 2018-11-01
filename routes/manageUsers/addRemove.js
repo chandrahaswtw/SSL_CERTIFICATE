@@ -60,6 +60,7 @@ function sendMail(req, res, email, passwordNew) {
   <br/>
   <h6>This mail has been sent by an automation. Please do not respond.</h6>`;
 
+
   sendmail({
     from: 'no-reply@in.ibm.com',
     to: email,
@@ -74,4 +75,16 @@ function sendMail(req, res, email, passwordNew) {
 
 }
 
-module.exports = { manageUsers };
+var removeUser = (req, res) => {
+  login.destroy(req.body.id, req.body._rev, (err, data) => {
+    if (err)
+      return res.send({ STATUS: "ERROR" });
+
+    res.send({ STATUS: "SUCCESS" });
+  })
+
+}
+
+
+
+module.exports = { manageUsers, removeUser };

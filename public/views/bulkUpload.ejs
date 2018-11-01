@@ -34,6 +34,13 @@
                 </ul>
 
                 <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active text-white">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#INSTRUCTIONS">
+                            <i class="fas fa-info"></i>
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="/">
                             HOME
@@ -116,19 +123,20 @@
             </div>
         </div>
 
+        <!-- MODAL INVALID FORMAT -->
 
-
-        <div class="modal fade" id="FORMAT_MODAL_VIEW" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal fade" id="FORMAT_MODAL_VIEW" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">WARNING !</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            <i class="fas fa-ban"></i> &nbsp INVALID FILE FORMAT</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        FILE FORMAT '.xlsx' ONLY ALLOWED.
+                        File format '.xlsx' only allowed.
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -137,11 +145,56 @@
             </div>
         </div>
 
+        <!-- MODAL INSTRUCTION -->
+
+        <div class="modal fade" id="INSTRUCTIONS" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">
+                            <i class="fas fa-info-circle"></i> &nbsp INSTRUCTIONS
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p> The following points are worth noting while performing the bulk upload.</p>
+                        <ul>
+                            <li>Application accepts
+                                <strong>Excel</strong> file of format
+                                <strong>.xlsx</strong> only and reject any other file format</li>
+                            <li>Download the template
+                                <a href="/templateDownload">here</a>. Make use of this template alone for bulk upload.
+                            </li>
+                            <li>Template consists of 16 columns : A - P. Upload fails if you intend to add any extra column.</li>
+                            <li>Choose values from the dropdown alone for Columns
+                                <strong>C</strong> &
+                                <strong>F</strong>. Application doesn't throw error if you add values other than from dropdown but
+                                the other pages fails to display the uploaded data correctly.
+                            </li>
+                            <li>Do not alter the sheetname(s) in the template. By default application uploads the data only from
+                                <strong>BULK_UPLOAD</strong> sheet alone.</li>
+                            <li>Avoid inclusion of spaces in
+                                <strong>APP ID</strong> column. For example APP- 365 or APP -365 are incorrect formats. Use APP-365.</li>
+                            <li>Duplicate entries are rejected automatically.The record you intend to upload with
+                                <strong>APP ID</strong> and
+                                <strong>SERVER</strong> that's pre-existing on Database are considered as duplicate and are rejected.</li>
+                            <li>Data duplication within the sheet cannot be controlled.</li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
         <%- include partials/footer_all.ejs %>
 
 </body>
 <!-- FOOTER SCRIPT -->
 <script src="javascript/bulkUpload.js"></script>
-<script src="javascript/excel_download.js"></script>
 
 </html>

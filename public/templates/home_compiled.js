@@ -3,7 +3,7 @@
 templates['home'] = template({"1":function(container,depth0,helpers,partials,data) {
     var stack1, alias1=container.lambda, alias2=container.escapeExpression;
 
-  return "    <tr>\r\n        <td scope=\"col\" class=\"counterCell\"></td>\r\n        <td scope=\"col\">"
+  return "    <tr>\r\n        <th scope=\"col\" class=\"counterCell\"></th>\r\n        <td scope=\"col\">"
     + alias2(alias1((depth0 != null ? depth0.appId : depth0), depth0))
     + "</td>\r\n        <td scope=\"col\">"
     + alias2(alias1((depth0 != null ? depth0.appName : depth0), depth0))

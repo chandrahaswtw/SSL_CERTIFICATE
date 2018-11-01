@@ -19,7 +19,7 @@ $(document).ready(function () {
     }
 
     // SIGN IN BUTTON TEXT CHANGE - RESTRICTING REPEATED CLICKS
-    $('#SIGNIN_BTN').attr('disabled', true).text('Authenticating...');
+    $('#SIGNIN_BTN').attr('disabled', true).css("opacity", "1").text('Authenticating...');
 
 
     $.post('/loginPost', $('#loginFrm').serializeArray()).done(function (data) {
@@ -37,7 +37,7 @@ $(document).ready(function () {
       }
       else if (data.STATUS == 'SUCCESS') {
         toastr.success(`Welcome ${((data.USER.username).split('@'))[0]}`, 'LOGIN SUCCESS');
-        setTimeout(function () { window.location.href = '/'; }, 1000);
+        setTimeout(function () { window.location.href = '/'; }, 500);
       }
     })
   })
